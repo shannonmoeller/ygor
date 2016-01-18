@@ -1,0 +1,30 @@
+{
+  "name": "ygor",
+  "version": "1.0.0",
+  "description": "Task runner.",
+  "main": "index.js",
+  "keywords": [
+    "broccoli",
+    "cake",
+    "grunt",
+    "gulp",
+    "jake",
+    "make",
+    "nake",
+    "npm",
+    "rake",
+    "run",
+    "runner",
+    "scripts"
+  ],
+  "author": "Shannon Moeller <me@shannonmoeller.com> (http://shannonmoeller.com)",
+  "license": "MIT",
+  "homepage": "https://github.com/shannonmoeller/ygor",
+  "bugs": {
+    "url": "https://github.com/shannonmoeller/ygor/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shannonmoeller/ygor"
+  }
+}
