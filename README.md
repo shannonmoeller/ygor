@@ -77,6 +77,6 @@ Licensed under [MIT](http://shannonmoeller.com/mit.txt)
 
 [amazon-img]:    https://img.shields.io/badge/amazon-tip_jar-yellow.svg?style=flat-square
 [amazon-url]:    https://www.amazon.com/gp/registry/wishlist/1VQM9ID04YPC5?sort=universal-price
-[downloads-img]: http://img.shields.io/npm/dm/gulp-promisify.svg?style=flat-square
-[npm-img]:       http://img.shields.io/npm/v/gulp-promisify.svg?style=flat-square
-[npm-url]:       https://npmjs.org/package/gulp-promisify
+[downloads-img]: http://img.shields.io/npm/dm/ygor.svg?style=flat-square
+[npm-img]:       http://img.shields.io/npm/v/ygor.svg?style=flat-square
+[npm-url]:       https://npmjs.org/package/ygor
