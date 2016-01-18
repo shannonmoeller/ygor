@@ -3,6 +3,7 @@
   "version": "1.2.0",
   "description": "Task runner.",
   "main": "index.js",
+  "license": "MIT",
   "keywords": [
     "broccoli",
     "cake",
@@ -18,7 +19,6 @@
     "scripts"
   ],
   "author": "Shannon Moeller <me@shannonmoeller.com> (http://shannonmoeller.com)",
-  "license": "MIT",
   "homepage": "https://github.com/shannonmoeller/ygor",
   "bugs": {
     "url": "https://github.com/shannonmoeller/ygor/issues"
@@ -31,6 +31,6 @@
     "minimist": "^1.2.0"
   },
   "scripts": {
-    "test": "node make test"
+    "test": "node make && node make test"
   }
 }

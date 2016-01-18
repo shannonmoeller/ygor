@@ -1,7 +1,14 @@
+'use strict';
+
 var ygor = require('./index');
 
-function test() {
-    console.log('ok');
+function foo() {
+    console.log('should run default task');
 }
 
-ygor.task('test', test);
+function bar() {
+    console.log('should run named task');
+}
+
+ygor.task('default', foo)
+    .task('test', bar);
