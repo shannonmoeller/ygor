@@ -26,5 +26,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/shannonmoeller/ygor"
+  },
+  "dependencies": {
+    "minimist": "^1.2.0"
   }
 }
