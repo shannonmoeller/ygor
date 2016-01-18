@@ -1,7 +1,7 @@
 'use strict';
 
-var cli = require('minimist')(process.argv.slice(2));
-var command = cli._.shift() || 'default';
+var cli = require('minimist')(process.argv.slice(2), {'--': true});
+var command = cli._.shift() || cli['--'].shift() || 'default';
 var tasks = {};
 
 function task(name, fn) {
