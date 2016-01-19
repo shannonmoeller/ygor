@@ -2,14 +2,28 @@
 
 var cli = require('minimist')(process.argv.slice(2));
 var command = cli._.shift() || 'default';
-var tasks = {};
+var tasks = Object.create(null);
 
 function run(name) {
+    if (!(name in tasks)) {
+        console.error('Tasks:\n  ' + Object.keys(tasks).join('\n  '));
+        return;
+    }
+
     tasks[name]();
 }
 
-function task(name, fn) {
-    tasks[name] = fn;
+function task(name, callback) {
+    if (typeof name !== 'string') {
+        throw new Error('Task name must be a string.');
+    }
+
+    if (typeof callback !== 'function') {
+        throw new Error('Task callback must be a function.');
+    }
+
+    tasks[name] = callback;
+
     return exports;
 }
 
