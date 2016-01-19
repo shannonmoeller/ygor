@@ -12,7 +12,7 @@ Task runner. For when `npm run` isn't enough and everything else is too much.
 
 Node is the CLI. To run a task, pass the task name as an argument.
 
-    node <script> [task]
+    $ node <script> [task]
 
 ## Example
 
@@ -77,7 +77,7 @@ Command-line arguments as parsed by [minimist](http://npm.im/minimist).
 
 ### `ygor.task(name, function) : ygor`
 
-Registers a task with Ygor. To run the task, pass the `name` as the first argument.
+Registers a task with Ygor.
 
 ----
 
