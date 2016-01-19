@@ -1,4 +1,4 @@
-# `ygor`
+<img src="https://cloud.githubusercontent.com/assets/155164/12421443/5383e6b6-be90-11e5-9d03-cd5f71953de4.png" alt="ygor" width="360" />
 
 [![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url] [![Tip][amazon-img]][amazon-url]
 
