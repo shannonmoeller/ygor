@@ -1,7 +1,7 @@
 {
   "name": "ygor",
   "version": "1.2.1",
-  "description": "Task runner. For when `npm run` isn't enough and `grunt`, `gulp`, et al. are too much.",
+  "description": "Task runner. For when `npm run` isn't enough and everything else is too much.",
   "main": "index.js",
   "license": "MIT",
   "keywords": [

@@ -2,13 +2,15 @@
 
 [![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url] [![Tip][amazon-img]][amazon-url]
 
-Task runner. For when `npm run` isn't enough and `grunt`, `gulp`, et al. are too much. Node is the CLI. To run a task, pass the `name` as the first argument.
+Task runner. For when `npm run` isn't enough and everything else is too much.
 
 ## Install
 
     $ npm install --save-dev ygor
 
 ## Usage
+
+Node is the CLI. To run a task, pass the task name as an argument.
 
     node <script> [task]
 
