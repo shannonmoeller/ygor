@@ -12,7 +12,7 @@ Task runner. For when `npm run` isn't enough and everything else is too much.
 
 Node is the CLI. To run a task, pass the task name as an argument.
 
-    node <script> [task]
+    $ node <script> [task]
 
 ## Example
 
