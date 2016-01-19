@@ -77,7 +77,7 @@ Command-line arguments as parsed by [minimist](http://npm.im/minimist).
 
 ### `ygor.task(name, function) : ygor`
 
-Registers a task with Ygor. To run the task, pass the `name` as the first argument.
+Registers a task with Ygor.
 
 ----
 
