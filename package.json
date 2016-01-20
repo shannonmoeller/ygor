@@ -31,6 +31,6 @@
     "minimist": "^1.2.0"
   },
   "scripts": {
-    "test": "node make && node make test"
+    "test": "node make && node make test && node make blargh"
   }
 }
