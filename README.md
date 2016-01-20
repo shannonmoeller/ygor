@@ -1,7 +1,7 @@
-<div style="align:center;">
+
 <img src="https://cloud.githubusercontent.com/assets/155164/12438697/228f158c-bef7-11e5-9b2d-07158b065438.png" alt="ygor" width="360" style="max-width:100%;height:1%;" />
+
 [![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url] [![Tip][amazon-img]][amazon-url]
-</div>
 
 Task runner. For when `npm run` isn't enough and everything else is too much.
 
