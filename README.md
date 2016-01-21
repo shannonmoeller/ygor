@@ -17,7 +17,7 @@ Node is the CLI. To run a task, pass the task name as an argument.
 
 ## Example
 
-Create a file, write some functions, tell Ygor, run the file.
+Create a file, write some functions, tell Ygor.
 
 ```js
 // make.js
@@ -36,7 +36,7 @@ ygor.task('bundle', bundle)
     .task('test', test);
 ```
 
-Then run the script and tell it which task to perform.
+Then run the script and indicate which task to perform.
 
     $ node make bundle
 
@@ -66,7 +66,7 @@ ygor.task('cover', cover)
     .task('test', test);
 ```
 
-Then run it.
+Then [run it](http://babeljs.io/docs/usage/cli/#babel-node).
 
     $ babel-node make cover
 
