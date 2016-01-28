@@ -5,9 +5,7 @@ var command = cli._.shift() || 'default';
 var tasks = Object.create(null);
 
 function logError(error) {
-    var stack = error && error.stack;
-
-    console.log(stack || error);
+    console.error(error && error.stack || error);
 }
 
 function run(name) {
