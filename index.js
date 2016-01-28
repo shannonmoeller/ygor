@@ -4,13 +4,21 @@ var cli = require('minimist')(process.argv.slice(2));
 var command = cli._.shift() || 'default';
 var tasks = Object.create(null);
 
+function logError(error) {
+    var stack = error && error.stack;
+
+    console.log(stack || error);
+}
+
 function run(name) {
     if (!(name in tasks)) {
         console.error('Tasks:\n  ' + Object.keys(tasks).join('\n  '));
         return;
     }
 
-    tasks[name]();
+    return Promise
+        .resolve(tasks[name]())
+        .catch(logError);
 }
 
 function task(name, callback) {
