@@ -1,6 +1,6 @@
 {
   "name": "ygor",
-  "version": "1.3.2",
+  "version": "1.4.0",
   "description": "Task runner. For when 'npm run' isn't enough and everything else is too much.",
   "main": "index.js",
   "license": "MIT",
