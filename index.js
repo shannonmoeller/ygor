@@ -1,7 +1,6 @@
 'use strict';
 
 var cli = require('minimist')(process.argv.slice(2));
-var command = cli._.shift() || 'default';
 var tasks = Object.create(null);
 
 function logError(error) {
@@ -9,6 +8,8 @@ function logError(error) {
 }
 
 function run(name) {
+    name = name || 'default';
+
     if (!(name in tasks)) {
         console.error('Tasks:\n  ' + Object.keys(tasks).join('\n  '));
         return;
@@ -37,4 +38,4 @@ exports.cli = cli;
 exports.run = run;
 exports.task = task;
 
-process.nextTick(run.bind(null, command));
+process.nextTick(run.bind(null, cli._.shift()));
