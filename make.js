@@ -10,5 +10,10 @@ function bar() {
     console.log('should run named task');
 }
 
+function baz() {
+    throw new Error('should throw');
+}
+
 ygor.task('default', foo)
-    .task('test', bar);
+    .task('test', bar)
+    .task('error', baz);

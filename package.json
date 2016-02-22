@@ -1,7 +1,7 @@
 {
   "name": "ygor",
   "version": "1.5.0",
-  "description": "Task runner. For when 'npm run' isn't enough and everything else is too much.",
+  "description": "A promising task runner.",
   "main": "index.js",
   "license": "MIT",
   "keywords": [
@@ -13,6 +13,7 @@
     "make",
     "nake",
     "npm",
+    "promise",
     "rake",
     "run",
     "runner",
@@ -28,7 +29,10 @@
     "url": "https://github.com/shannonmoeller/ygor"
   },
   "dependencies": {
+    "cli-columns": "^1.0.6",
     "minimist": "^1.2.0"
+  },
+  "devDependencies": {
   },
   "scripts": {
     "test": "node make && node make test && node make ls"

@@ -1,23 +1,26 @@
 'use strict';
 
 var cli = require('minimist')(process.argv.slice(2));
+var columns = require('cli-columns');
 var tasks = Object.create(null);
 
-function logError(error) {
-    console.error(error && error.stack || error);
+function error(err) {
+    console.error(err && err.stack || err);
+
+    return exports;
 }
 
 function run(name) {
     name = name || 'default';
 
     if (!(name in tasks)) {
-        console.error('Tasks:\n  ' + Object.keys(tasks).join('\n  '));
+        console.error(columns(Object.keys(tasks)));
         return;
     }
 
     return Promise
         .resolve(tasks[name]())
-        .catch(logError);
+        .catch(error);
 }
 
 function task(name, callback) {
@@ -35,6 +38,7 @@ function task(name, callback) {
 }
 
 exports.cli = cli;
+exports.error = error;
 exports.run = run;
 exports.task = task;
 
