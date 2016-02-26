@@ -119,7 +119,7 @@ Ygor doesn't know how to find, edit or watch files. NPM is his plugin system. He
 
 ----
 
-© 2016 Shannon Moeller <me@shannonmoeller.com>
+© Shannon Moeller <me@shannonmoeller.com> (shannonmoeller.com)
 
 Licensed under [MIT](http://shannonmoeller.com/mit.txt)
 
