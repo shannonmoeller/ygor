@@ -68,11 +68,11 @@ ygor.task('cover', cover)
 
 Then [run it](https://github.com/shannonmoeller/esprev).
 
-    $ babel-node make cover
+    $ es make cover
 
 or
 
-    $ es make cover
+    $ babel-node make cover
 
 ## API
 
