@@ -1,7 +1,7 @@
 
 <img src="https://cloud.githubusercontent.com/assets/155164/13224204/703d357a-d955-11e5-9cfb-e7ed557324f2.png" alt="ygor" width="360" style="max-width:100%;height:1%;" />
 
-[![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url] [![Tip][amazon-img]][amazon-url]
+[![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url] [![Build Status][travis-img]][travis-url] [![Coverage Status][coveralls-img]][coveralls-url] [![Chat][gitter-img]][gitter-url] [![Tip][amazon-img]][amazon-url]
 
 Ygor is yet another JavaScript task runner. For when `npm run` isn't enough and everything else is too much.
 
@@ -116,6 +116,8 @@ Ygor doesn't know how to find, edit or watch files. NPM is his plugin system. He
 
 ### Watching Files
 
+- [`browser-sync`](http://npm.im/browser-sync)
+- [`budo`](http://npm.im/budo)
 - [`chokidar`](http://npm.im/chokidar)
 - [`chokidar-cli`](http://npm.im/chokidar-cli)
 - [`graceful-chokidar`](http://npm.im/graceful-chokidar)
@@ -129,6 +131,10 @@ Licensed under [MIT](http://shannonmoeller.com/mit.txt)
 
 [amazon-img]:    https://img.shields.io/badge/amazon-tip_jar-yellow.svg?style=flat-square
 [amazon-url]:    https://www.amazon.com/gp/registry/wishlist/1VQM9ID04YPC5?sort=universal-price
+[coveralls-img]: http://img.shields.io/coveralls/shannonmoeller/ygor/master.svg?style=flat-square
+[coveralls-url]: https://coveralls.io/r/shannonmoeller/ygor
 [downloads-img]: http://img.shields.io/npm/dm/ygor.svg?style=flat-square
 [npm-img]:       http://img.shields.io/npm/v/ygor.svg?style=flat-square
 [npm-url]:       https://npmjs.org/package/ygor
+[travis-img]:    http://img.shields.io/travis/shannonmoeller/ygor.svg?style=flat-square
+[travis-url]:    https://travis-ci.org/shannonmoeller/ygor
