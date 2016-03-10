@@ -1,6 +1,6 @@
 {
   "name": "ygor",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "A promising task runner.",
   "main": "index.js",
   "license": "MIT",
