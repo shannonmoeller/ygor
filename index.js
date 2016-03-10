@@ -5,36 +5,36 @@ var columns = require('cli-columns');
 var tasks = Object.create(null);
 
 function error(err) {
-    console.error(err && err.stack || err);
+	console.error(err && err.stack || err);
 
-    return exports;
+	return exports;
 }
 
 function run(name) {
-    name = name || 'default';
+	name = name || 'default';
 
-    if (!(name in tasks)) {
-        console.log(columns(Object.keys(tasks)));
-        return;
-    }
+	if (!(name in tasks)) {
+		console.log(columns(Object.keys(tasks)));
+		return;
+	}
 
-    return Promise
-        .resolve(tasks[name]())
-        .catch(error);
+	return Promise
+		.resolve(tasks[name]())
+		.catch(error);
 }
 
 function task(name, callback) {
-    if (typeof name !== 'string') {
-        throw new Error('Task name must be a string.');
-    }
+	if (typeof name !== 'string') {
+		throw new Error('Task name must be a string.');
+	}
 
-    if (typeof callback !== 'function') {
-        throw new Error('Task callback must be a function.');
-    }
+	if (typeof callback !== 'function') {
+		throw new Error('Task callback must be a function.');
+	}
 
-    tasks[name] = callback;
+	tasks[name] = callback;
 
-    return exports;
+	return exports;
 }
 
 exports.cli = cli;

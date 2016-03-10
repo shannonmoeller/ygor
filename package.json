@@ -3,7 +3,15 @@
   "version": "1.5.2",
   "description": "A promising task runner.",
   "main": "index.js",
-  "license": "MIT",
+  "scripts": {
+    "coveralls": "nyc report -r text-lcov | coveralls",
+    "pretest": "xo",
+    "test": "nyc node test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shannonmoeller/ygor"
+  },
   "keywords": [
     "broccoli",
     "cake",
@@ -20,20 +28,17 @@
     "scripts"
   ],
   "author": "Shannon Moeller <me@shannonmoeller.com> (http://shannonmoeller.com)",
-  "homepage": "https://github.com/shannonmoeller/ygor",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/shannonmoeller/ygor/issues"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/shannonmoeller/ygor"
-  },
+  "homepage": "https://github.com/shannonmoeller/ygor",
   "dependencies": {
     "cli-columns": "^1.0.6",
     "minimist": "^1.2.0"
   },
-  "devDependencies": {},
-  "scripts": {
-    "test": "node make && node make test && node make ls"
+  "devDependencies": {
+    "nyc": "^6.0.0",
+    "xo": "^0.13.0"
   }
 }

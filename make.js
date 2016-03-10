@@ -3,17 +3,22 @@
 var ygor = require('./index');
 
 function foo() {
-    console.log('should run default task');
+	console.log('should run default task');
 }
 
 function bar() {
-    console.log('should run named task');
+	console.log('should run named task');
 }
 
 function baz() {
-    throw new Error('should throw');
+	throw new Error('should throw');
+}
+
+function qux() {
+	ygor.error(new Error('should not throw'));
 }
 
 ygor.task('default', foo)
-    .task('test', bar)
-    .task('error', baz);
+	.task('test', bar)
+	.task('throw', baz)
+	.task('error', qux);
