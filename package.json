@@ -38,6 +38,7 @@
     "minimist": "^1.2.0"
   },
   "devDependencies": {
+    "coveralls": "^2.11.8",
     "nyc": "^6.0.0",
     "xo": "^0.13.0"
   }
