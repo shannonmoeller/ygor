@@ -14,7 +14,7 @@ function run(name) {
     name = name || 'default';
 
     if (!(name in tasks)) {
-        console.error(columns(Object.keys(tasks)));
+        console.log(columns(Object.keys(tasks)));
         return;
     }
 
