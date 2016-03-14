@@ -131,7 +131,7 @@ ygor.task('bar', function () {
 
 ## That's It?
 
-Ygor doesn't know how to find, edit or watch files. NPM is his plugin system. He requests that you select the right tools for him. These look good:
+Ygor doesn't know how to find, edit, or watch files. NPM is his plugin system. He requests that you select the right tools for him. These look good:
 
 ### Finding Files
 
