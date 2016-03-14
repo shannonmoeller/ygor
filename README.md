@@ -1,4 +1,3 @@
-
 <img src="https://cloud.githubusercontent.com/assets/155164/13732480/299e40cc-e95a-11e5-807f-fbc3bd250f03.png" alt="ygor" width="360" style="max-width:100%;height:1%;" />
 
 [![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url] [![Build Status][travis-img]][travis-url] [![Coverage Status][coveralls-img]][coveralls-url] [![Chat][gitter-img]][gitter-url] [![Tip][amazon-img]][amazon-url]
@@ -11,9 +10,12 @@ Ygor is yet another JavaScript task runner. For when `npm run` isn't enough and 
 
 ## Usage
 
-Node is the CLI. To run a task, pass the task name as an argument.
+Node is the CLI. To run a task, execute your script file and pass the task name as an argument.
 
-    $ node <script> [task]
+    $ node <file> [task]
+    
+- `file` The filename of your script.
+- `task` The name of the task to run. Default: `default`.
 
 ## Example
 
@@ -32,13 +34,14 @@ function test() {
     // test something
 }
 
-ygor.task('bundle', bundle)
+ygor.task('default', bundle)
     .task('test', test);
 ```
 
 Then run the script and indicate which task to perform.
 
-    $ node make bundle
+    $ node make
+    $ node make test
 
 Need to run asynchronous tasks? Cool. Use the [`async` and `await` keywords](https://jakearchibald.com/2014/es7-async-functions/) for flow control.
 
@@ -66,12 +69,9 @@ ygor.task('cover', cover)
     .task('test', test);
 ```
 
-Then [run it](https://github.com/shannonmoeller/esprev).
+Then run it with [esprev](https://github.com/shannonmoeller/esprev) or [babel-node](http://babeljs.io/docs/usage/cli/#babel-node) ([plugin](transform-async-to-generator) required).
 
     $ es make cover
-
-or
-
     $ babel-node make cover
 
 ## API
@@ -80,17 +80,54 @@ or
 
 Command-line arguments as parsed by [minimist](http://npm.im/minimist).
 
+### `ygor.task(name, callback) : ygor`
+
+- `name` `{String}` Unique task identifier.
+- `callback` `{Function}` Function to run when the task is invoked.
+
+Registers a task with Ygor.
+
 ### `ygor.error(err) : ygor`
 
-Logs an error, including a stack trace when available.
+- `err` `{Error|String}` Error to be logged.
+
+Logs an error, including a stack trace when available. This is used internally to handle catchable errors. Some errors can't be caught by Ygor (such as errors in callbacks), so you may use this as a catch handler to keep the process from terminating.
+
+```js
+chokidar
+    .watch('**/*.js')
+    .on('change', function () {
+        try {
+            someSyncTask();
+        } catch (err) {
+            ygor.error(err);
+        }
+        
+        someAsyncTask()
+            .then(successHandler)
+            .catch(ygor.error);
+    });
+```
 
 ### `ygor.run(name) : Promise`
 
-Tells Ygor to run a task.
+Tells Ygor to run a task. This is called automatically and generally shouldn't be invoked directly. Ygor recommends that tasks be declared as standalone functions.
 
-### `ygor.task(name, function) : ygor`
+```js
+// Good
 
-Registers a task with Ygor.
+function foo() {
+    // do something
+}
+
+ygor.task('foo', foo);
+
+// Bad
+
+ygor.task('bar', function () {
+    // do something
+});
+```
 
 ## That's It?
 
