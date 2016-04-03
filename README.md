@@ -142,7 +142,6 @@ Ygor doesn't know how to find, edit, or watch files. NPM is his plugin system. H
 - [`look-up`](http://npm.im/look-up)
 - [`mem-fs`](http://npm.im/mem-fs)
 - [`node-glob`](http://npm.im/node-glob)
-- [`vinyl-fs`](http://npm.im/vinyl-fs)
 
 ### Editing Files
 
@@ -150,6 +149,8 @@ Ygor doesn't know how to find, edit, or watch files. NPM is his plugin system. H
 - [`fs-promise`](http://npm.im/fs-promise)
 - [`graceful-fs`](http://npm.im/graceful-fs)
 - [`mem-fs-editor`](http://npm.im/mem-fs-editor)
+- [`spiff`](http://npm.im/spiff)
+- [`vinyl-fs`](http://npm.im/vinyl-fs)
 
 ### Watching Files
 
