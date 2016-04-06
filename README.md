@@ -12,10 +12,14 @@ Ygor is yet another JavaScript task runner. For when `npm run` isn't enough and 
 
 Node is the CLI. To run a task, execute your script file and pass the task name as an argument.
 
-    $ node <file> [task]
-    
-- `file` The filename of your script.
-- `task` The name of the task to run. Default: `default`.
+    $ node <file> [task] [options]
+
+      file  The filename of your script.
+      task  The name of the task to run. Default: 'default'.
+
+    Options
+
+      -v, --verbose  Output task execution times.
 
 ## Example
 
@@ -102,7 +106,7 @@ chokidar
         } catch (err) {
             ygor.error(err);
         }
-        
+
         someAsyncTask()
             .then(successHandler)
             .catch(ygor.error);
