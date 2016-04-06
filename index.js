@@ -1,13 +1,31 @@
 'use strict';
 
-var cli = require('minimist')(process.argv.slice(2));
+var chalk = require('chalk');
 var columns = require('cli-columns');
+var minimist = require('minimist');
+var path = require('path');
+
+var script = path.basename(process.argv[1]);
+var cli = minimist(process.argv.slice(2));
+
+var isVerbose = cli.v || cli.verbose;
 var tasks = Object.create(null);
+
+function noop() {}
 
 function error(err) {
 	console.error(err && err.stack || err);
 
 	return exports;
+}
+
+function time(name) {
+	name = '[' + chalk.green(script) + '] ' + chalk.magenta(name);
+
+	console.log(name + '...');
+	console.time(name);
+
+	return console.timeEnd.bind(console, name);
 }
 
 function run(name) {
@@ -18,9 +36,12 @@ function run(name) {
 		return;
 	}
 
+	var timer = isVerbose ? time(name) : noop;
+
 	return Promise
 		.resolve(tasks[name]())
-		.catch(error);
+		.catch(error)
+		.then(timer);
 }
 
 function task(name, callback) {
@@ -41,5 +62,6 @@ exports.cli = cli;
 exports.error = error;
 exports.run = run;
 exports.task = task;
+exports.time = time;
 
 process.nextTick(run.bind(null, cli._.shift()));

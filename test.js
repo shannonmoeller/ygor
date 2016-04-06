@@ -43,3 +43,17 @@ exec('node make ls', function (err, stdout, stderr) {
 	assert.equal(stdout, 'default\nerror\ntest\nthrow\n');
 	assert.equal(stderr, '');
 });
+
+exec('node make -v', function (err, stdout, stderr) {
+	assert.equal(err, null);
+	assert.ok(/\[make\] default\.\.\./.test(stdout));
+	assert.ok(/should run default task/.test(stdout));
+	assert.equal(stderr, '');
+});
+
+exec('node make --verbose', function (err, stdout, stderr) {
+	assert.equal(err, null);
+	assert.ok(/\[make\] default\.\.\./.test(stdout));
+	assert.ok(/should run default task/.test(stdout));
+	assert.equal(stderr, '');
+});
