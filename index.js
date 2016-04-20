@@ -39,7 +39,7 @@ function run(name) {
 	var timer = isVerbose ? time(name) : noop;
 
 	return Promise
-		.resolve(tasks[name]())
+		.resolve(tasks[name](cli))
 		.catch(error)
 		.then(timer);
 }
