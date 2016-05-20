@@ -1,6 +1,7 @@
-<img src="https://cdn.rawgit.com/shannonmoeller/ygor/7b58826/logo.svg" alt="ygor" width="360" style="margin:0 auto;max-width:100%;height:1%;" />
+<img src="https://cdn.rawgit.com/shannonmoeller/ygor/7b58826/logo.svg" alt="ygor" style="max-width:100%;height:1%;" />
 
 [![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url] [![Build Status][travis-img]][travis-url] [![Coverage Status][coveralls-img]][coveralls-url] [![Chat][gitter-img]][gitter-url] [![Tip][amazon-img]][amazon-url]
+
 Ygor is yet another JavaScript task runner. For when `npm run` isn't enough and everything else is too much.
 
 ## Install
