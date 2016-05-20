@@ -1,4 +1,4 @@
-<img src="https://cdn.rawgit.com/shannonmoeller/ygor/7b58826/logo.svg" alt="ygor" style="max-width:100%;height:1%;" />
+<a href="https://github.com/shannonmoeller/ygor"><img src="https://cdn.rawgit.com/shannonmoeller/ygor/7b58826/logo.svg" alt="ygor" style="max-width:100%;height:1%;" /></a>
 
 [![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url] [![Build Status][travis-img]][travis-url] [![Coverage Status][coveralls-img]][coveralls-url] [![Chat][gitter-img]][gitter-url] [![Tip][amazon-img]][amazon-url]
 
