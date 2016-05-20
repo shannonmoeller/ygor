@@ -1,6 +1,6 @@
 <div style="text-align:center;">
-    <img src="https://raw.githubusercontent.com/shannonmoeller/whim/master/logo.wvg" alt="ygor" width="360" style="max-width:100%;height:1%;" />
-    [![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url] [![Build Status][travis-img]][travis-url] [![Coverage Status][coveralls-img]][coveralls-url] [![Chat][gitter-img]][gitter-url] [![Tip][amazon-img]][amazon-url]
+<img src="https://raw.githubusercontent.com/shannonmoeller/ygor/master/logo.svg" alt="ygor" width="360" style="max-width:100%;height:1%;" />
+[![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url] [![Build Status][travis-img]][travis-url] [![Coverage Status][coveralls-img]][coveralls-url] [![Chat][gitter-img]][gitter-url] [![Tip][amazon-img]][amazon-url]
 </div>
 
 Ygor is yet another JavaScript task runner. For when `npm run` isn't enough and everything else is too much.
