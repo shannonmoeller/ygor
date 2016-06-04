@@ -35,10 +35,7 @@
     "minimist": "^1.2.0"
   },
   "devDependencies": {
-    "coveralls": "^2.11.9",
-    "nyc": "^6.4.4",
-    "whim": "^3.0.6",
-    "xo": "^0.15.1"
+    "whim": "^3.0.6"
   },
   "scripts": {
     "coveralls": "whim test report",
