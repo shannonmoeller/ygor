@@ -35,17 +35,15 @@
     "minimist": "^1.2.0"
   },
   "devDependencies": {
-    "chokidar-cli": "^1.2.0",
-    "coveralls": "^2.11.8",
-    "nyc": "^6.0.0",
-    "xo": "^0.13.0"
+    "coveralls": "^2.11.9",
+    "nyc": "^6.4.4",
+    "whim": "^3.0.5",
+    "xo": "^0.15.1"
   },
   "scripts": {
-    "coveralls": "nyc report -r text-lcov | coveralls",
-    "pretest": "xo",
-    "test": "nyc node test",
-    "posttest": "nyc report -r lcov",
-    "watch": "chokidar '*.js' -c 'npm test'"
+    "coveralls": "whim test report",
+    "pretest": "whim lint",
+    "test": "whim test"
   },
   "engines": {
     "node": ">= 0.12.0"

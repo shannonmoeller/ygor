@@ -1,9 +1,9 @@
 'use strict';
 
+var path = require('path');
 var chalk = require('chalk');
 var columns = require('cli-columns');
 var minimist = require('minimist');
-var path = require('path');
 
 var script = path.basename(process.argv[1]);
 var cli = minimist(process.argv.slice(2));
@@ -60,7 +60,11 @@ function ygor(options) {
 			return;
 		}
 
-		name = name || options._.shift() || 'default';
+		if (!arguments.length) {
+			name = options._.shift();
+		}
+
+		name = name || 'default';
 
 		if (!(name in tasks)) {
 			console.log(columns(keys));
