@@ -18,7 +18,18 @@ function qux() {
 	ygor.error(new Error('should not throw'));
 }
 
-ygor.task('default', foo)
+function parent() {
+	function child() {
+		console.log('should run sub task');
+	}
+
+	return ygor()
+		.task('child', child);
+}
+
+ygor
+	.task('default', foo)
 	.task('test', bar)
+	.task('parent', parent)
 	.task('throw', baz)
 	.task('error', qux);

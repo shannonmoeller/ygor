@@ -35,7 +35,7 @@ function ygor(options) {
 		return function timeEnd(val) {
 			console.timeEnd(name);
 
-			return val
+			return val;
 		};
 	}
 
@@ -75,16 +75,18 @@ function ygor(options) {
 			.then(timer);
 	}
 
+	sub.cli = cli;
+	sub.error = error;
+	sub.time = time;
+	sub.task = task;
+	sub.run = run;
+
 	var promise = new Promise(function (resolve) {
 		process.nextTick(function () {
 			resolve(run());
 		});
 	});
 
-	sub.error = error;
-	sub.time = time;
-	sub.task = task;
-	sub.run = run;
 	sub.then = promise.then.bind(promise);
 	sub.catch = promise.catch.bind(promise);
 

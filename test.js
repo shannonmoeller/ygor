@@ -26,6 +26,12 @@ exec('node make test', function (err, stdout, stderr) {
 	assert.equal(stderr, '');
 });
 
+exec('node make parent child', function (err, stdout, stderr) {
+	assert.equal(err, null);
+	assert.equal(stdout, 'should run sub task\n');
+	assert.equal(stderr, '');
+});
+
 exec('node make throw', function (err, stdout, stderr) {
 	assert.ok(/should throw/.test(err));
 	assert.equal(stdout, '');
@@ -40,7 +46,7 @@ exec('node make error', function (err, stdout, stderr) {
 
 exec('node make ls', function (err, stdout, stderr) {
 	assert.equal(err, null);
-	assert.equal(stdout, 'default\nerror\ntest\nthrow\n');
+	assert.equal(stdout, 'default\nerror\nparent\ntest\nthrow\n');
 	assert.equal(stderr, '');
 });
 
