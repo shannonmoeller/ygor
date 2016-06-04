@@ -1,8 +1,8 @@
 [![ygor](https://cdn.rawgit.com/shannonmoeller/ygor/7b58826/logo.svg)](https://github.com/shannonmoeller/ygor#readme)
 
-[![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url] [![Build Status][travis-img]][travis-url] [![Coverage Status][coveralls-img]][coveralls-url] [![Chat][gitter-img]][gitter-url] [![Tip][tip-img]][tip-url]
+<div align="center">[![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url] [![Build Status][travis-img]][travis-url] [![Coverage Status][coveralls-img]][coveralls-url] [![Chat][gitter-img]][gitter-url] [![Tip][tip-img]][tip-url]</div>
 
-Ygor is yet another JavaScript task runner. For when `npm run` isn't enough and everything else is too much.
+<div align="center">Ygor is yet another JavaScript task runner. For when `npm run` isn't enough and everything else is too much.</div>
 
 ## Install
 
