@@ -38,7 +38,8 @@ function test() {
     // test something
 }
 
-ygor.task('default', bundle)
+ygor
+    .task('default', bundle)
     .task('test', test);
 ```
 
@@ -69,11 +70,12 @@ async function cover() {
     // report coverage
 }
 
-ygor.task('cover', cover)
+ygor
+    .task('cover', cover)
     .task('test', test);
 ```
 
-Then run it with [esprev](https://github.com/shannonmoeller/esprev) or [babel-node](http://babeljs.io/docs/usage/cli/#babel-node) ([plugin](transform-async-to-generator) required).
+Then run it with [esprev](https://github.com/shannonmoeller/esprev) or [babel-node](http://babeljs.io/docs/usage/cli/#babel-node) ([presets](http://babeljs.io/docs/plugins/#official-presets) and [plugin](transform-async-to-generator) required).
 
     $ es make cover
     $ babel-node make cover
@@ -87,9 +89,9 @@ Command-line arguments as parsed by [minimist](http://npm.im/minimist).
 ### `ygor.task(name, callback) : ygor`
 
 - `name` `{String}` Unique task identifier.
-- `callback` `{Function}` Function to run when the task is invoked.
+- `callback` `{Function(cli, ygor)}` Function to run when the task is invoked.
 
-Registers a task with Ygor.
+Registers a task with Ygor. The callback provided will be executed with `ygor.cli` as the first argument and `ygor` as the second.
 
 ### `ygor.error(err) : ygor`
 
@@ -132,6 +134,65 @@ ygor.task('bar', function () {
     // do something
 });
 ```
+
+## Deferred Tasks and Subtasks
+
+If you need to define tasks asynchronously, you may call `ygor()` as a function at a later time.
+
+```js
+TaskAPI
+    .getTasks()
+    .then(tasks => {
+        return ygor()
+            .task('foo', tasks.foo)
+            .task('bar', tasks.bar);
+    });
+```
+
+You may also call `ygor()` within a task callback to create subtasks.
+
+```js
+function childA1() {
+    console.log('hi from child A1');
+}
+
+function childA2() {
+    console.log('hi from child A2');
+}
+
+function childB1() {
+    console.log('hi from child B1');
+}
+
+function childB2() {
+    console.log('hi from child B2');
+}
+
+function parentA() {
+    // Subtasks
+    return ygor()
+        .task('1', childA1)
+        .task('2', childA2);
+}
+
+function parentB() {
+    // Subtasks
+    return ygor()
+        .task('1', childB1)
+        .task('2', childB2);
+}
+
+ygor
+    .task('a', parentA)
+    .task('b', parentB);
+```
+
+Then execute subtasks by passing the parent task name as the first argument and the child task name as the second.
+
+    $ node make a 2
+    hello from child A2
+    $ node make b 1
+    hello from child B1
 
 ## That's It?
 

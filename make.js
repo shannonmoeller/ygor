@@ -2,34 +2,39 @@
 
 var ygor = require('./index');
 
-function foo() {
+function dflt() {
 	console.log('should run default task');
 }
 
-function bar() {
+function tst() {
 	console.log('should run named task');
 }
 
-function baz() {
+function thrw() {
 	throw new Error('should throw');
 }
 
-function qux() {
+function errr() {
 	ygor.error(new Error('should not throw'));
 }
 
 function parent() {
-	function child() {
+	function childA() {
 		console.log('should run sub task');
 	}
 
+	function childB() {
+		throw new Error('child b should not run');
+	}
+
 	return ygor()
-		.task('child', child);
+		.task('childA', childA)
+		.task('childB', childB);
 }
 
 ygor
-	.task('default', foo)
-	.task('test', bar)
-	.task('parent', parent)
-	.task('throw', baz)
-	.task('error', qux);
+	.task('default', dflt)
+	.task('test', tst)
+	.task('throw', thrw)
+	.task('error', errr)
+	.task('parent', parent);

@@ -1,65 +1,69 @@
 'use strict';
 
-var assert = require('assert');
+var test = require('whim/test');
 var exec = require('child_process').exec;
 var ygor = require('./index');
 
-assert.equal(typeof ygor.cli, 'object');
+test('ygor', function (t) {
+	t.plan(29);
 
-assert.throws(function () {
-	ygor.task();
-});
+	t.equal(typeof ygor.cli, 'object');
 
-assert.throws(function () {
-	ygor.task('foo');
-});
+	t.throws(function () {
+		ygor.task();
+	});
 
-exec('node make', function (err, stdout, stderr) {
-	assert.equal(err, null);
-	assert.equal(stdout, 'should run default task\n');
-	assert.equal(stderr, '');
-});
+	t.throws(function () {
+		ygor.task('foo');
+	});
 
-exec('node make test', function (err, stdout, stderr) {
-	assert.equal(err, null);
-	assert.equal(stdout, 'should run named task\n');
-	assert.equal(stderr, '');
-});
+	exec('node make', function (err, stdout, stderr) {
+		t.equal(err, null);
+		t.equal(stdout, 'should run default task\n');
+		t.equal(stderr, '');
+	});
 
-exec('node make parent child', function (err, stdout, stderr) {
-	assert.equal(err, null);
-	assert.equal(stdout, 'should run sub task\n');
-	assert.equal(stderr, '');
-});
+	exec('node make test', function (err, stdout, stderr) {
+		t.equal(err, null);
+		t.equal(stdout, 'should run named task\n');
+		t.equal(stderr, '');
+	});
 
-exec('node make throw', function (err, stdout, stderr) {
-	assert.ok(/should throw/.test(err));
-	assert.equal(stdout, '');
-	assert.ok(/should throw/.test(stderr));
-});
+	exec('node make throw', function (err, stdout, stderr) {
+		t.equal(/should throw/.test(err), true);
+		t.equal(stdout, '');
+		t.equal(/should throw/.test(stderr), true);
+	});
 
-exec('node make error', function (err, stdout, stderr) {
-	assert.equal(err, null);
-	assert.equal(stdout, '');
-	assert.ok(/should not throw/.test(stderr));
-});
+	exec('node make error', function (err, stdout, stderr) {
+		t.equal(err, null);
+		t.equal(stdout, '');
+		t.equal(/should not throw/.test(stderr), true);
+	});
 
-exec('node make ls', function (err, stdout, stderr) {
-	assert.equal(err, null);
-	assert.equal(stdout, 'default\nerror\nparent\ntest\nthrow\n');
-	assert.equal(stderr, '');
-});
+	exec('node make parent childA', function (err, stdout, stderr) {
+		t.equal(err, null);
+		t.equal(stdout, 'should run sub task\n');
+		t.equal(stderr, '');
+	});
 
-exec('node make -v', function (err, stdout, stderr) {
-	assert.equal(err, null);
-	assert.ok(/\[make\] default\.\.\./.test(stdout));
-	assert.ok(/should run default task/.test(stdout));
-	assert.equal(stderr, '');
-});
+	exec('node make ls', function (err, stdout, stderr) {
+		t.equal(err, null);
+		t.equal(stdout, 'default\nerror\nparent\ntest\nthrow\n');
+		t.equal(stderr, '');
+	});
 
-exec('node make --verbose', function (err, stdout, stderr) {
-	assert.equal(err, null);
-	assert.ok(/\[make\] default\.\.\./.test(stdout));
-	assert.ok(/should run default task/.test(stdout));
-	assert.equal(stderr, '');
+	exec('node make -v', function (err, stdout, stderr) {
+		t.equal(err, null);
+		t.equal(/\[make\] default\.\.\./.test(stdout), true);
+		t.equal(/should run default task/.test(stdout), true);
+		t.equal(stderr, '');
+	});
+
+	exec('node make --verbose', function (err, stdout, stderr) {
+		t.equal(err, null);
+		t.equal(/\[make\] default\.\.\./.test(stdout), true);
+		t.equal(/should run default task/.test(stdout), true);
+		t.equal(stderr, '');
+	});
 });

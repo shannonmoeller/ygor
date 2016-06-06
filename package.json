@@ -32,10 +32,11 @@
   "dependencies": {
     "chalk": "^1.1.3",
     "cli-columns": "^1.0.6",
-    "minimist": "^1.2.0"
+    "minimist": "^1.2.0",
+    "object-assign": "^4.1.0"
   },
   "devDependencies": {
-    "whim": "^3.0.6"
+    "whim": "^3.0.9"
   },
   "scripts": {
     "coveralls": "whim test report",

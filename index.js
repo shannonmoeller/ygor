@@ -1,6 +1,7 @@
 'use strict';
 
 var path = require('path');
+var assign = require('object-assign');
 var chalk = require('chalk');
 var columns = require('cli-columns');
 var minimist = require('minimist');
@@ -8,16 +9,18 @@ var minimist = require('minimist');
 var script = path.basename(process.argv[1]);
 var cli = minimist(process.argv.slice(2));
 
-function noop() {}
+function noop() {
+	// no operation
+}
 
 function ygor(options) {
-	options = options || cli;
-
+	var promise;
 	var tasks = Object.create(null);
-	var isVerbose = options.v || options.verbose;
+	var localOptions = options || cli;
+	var isVerbose = localOptions.v || localOptions.verbose;
 
-	function sub(options) {
-		return ygor(options);
+	function sub(opts) {
+		return ygor(opts);
 	}
 
 	function error(err) {
@@ -27,13 +30,13 @@ function ygor(options) {
 	}
 
 	function time(name) {
-		name = '[' + chalk.green(script) + '] ' + chalk.magenta(name);
+		var localName = '[' + chalk.green(script) + '] ' + chalk.magenta(name);
 
-		console.log(name + '...');
-		console.time(name);
+		console.log(localName + '...');
+		console.time(localName);
 
 		return function timeEnd(val) {
-			console.timeEnd(name);
+			console.timeEnd(localName);
 
 			return val;
 		};
@@ -54,47 +57,50 @@ function ygor(options) {
 	}
 
 	function run(name) {
+		var timeEnd;
+		var localName = name;
 		var keys = Object.keys(tasks);
 
 		if (!keys.length) {
-			return;
+			return null;
 		}
 
 		if (!arguments.length) {
-			name = options._.shift();
+			localName = localOptions._.shift();
 		}
 
-		name = name || 'default';
+		localName = localName || 'default';
 
-		if (!(name in tasks)) {
+		if (!(localName in tasks)) {
 			console.log(columns(keys));
-			return;
+
+			return null;
 		}
 
-		var timer = isVerbose ? time(name) : noop;
+		timeEnd = isVerbose ? time(localName) : noop;
 
 		return Promise
-			.resolve(tasks[name](options, sub))
+			.resolve(tasks[localName](localOptions, sub))
 			.catch(error)
-			.then(timer);
+			.then(timeEnd);
 	}
 
-	sub.cli = cli;
-	sub.error = error;
-	sub.time = time;
-	sub.task = task;
-	sub.run = run;
-
-	var promise = new Promise(function (resolve) {
+	promise = new Promise(function (resolve) {
 		process.nextTick(function () {
 			resolve(run());
 		});
 	});
 
-	sub.then = promise.then.bind(promise);
-	sub.catch = promise.catch.bind(promise);
+	return assign(sub, {
+		cli: cli,
+		error: error,
+		time: time,
+		task: task,
+		run: run,
 
-	return sub;
+		then: promise.then.bind(promise),
+		catch: promise.catch.bind(promise),
+	});
 }
 
 module.exports = ygor();
