@@ -9,8 +9,8 @@ var minimist = require('minimist');
 var script = path.basename(process.argv[1]);
 var cli = minimist(process.argv.slice(2));
 
-function noop() {
-	// no operation
+function noop(val) {
+	return val;
 }
 
 function ygor(options) {
