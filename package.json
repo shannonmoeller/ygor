@@ -36,7 +36,7 @@
     "object-assign": "^4.1.0"
   },
   "devDependencies": {
-    "whim": "^3.0.9"
+    "whim": "^3.0.10"
   },
   "scripts": {
     "coveralls": "whim test report",
