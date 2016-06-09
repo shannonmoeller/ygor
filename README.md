@@ -1,6 +1,6 @@
 [![ygor](https://cdn.rawgit.com/shannonmoeller/ygor/0d33f40/media/logo.svg)](https://github.com/shannonmoeller/ygor#readme)
 
-[![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url] [![Build Status][travis-img]][travis-url] [![Coverage Status][coveralls-img]][coveralls-url] [![Chat][gitter-img]][gitter-url] [![Tip][tip-img]][tip-url]
+[![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url] [![Build Status][travis-img]][travis-url] [![Coverage Status][coveralls-img]][coveralls-url] [![Tip][tip-img]][tip-url]
 
 JavaScript task runner. For when `npm run` isn't enough and everything else is too much.
 
@@ -237,8 +237,6 @@ Licensed under [MIT](http://shannonmoeller.com/mit.txt)
 [coveralls-img]: http://img.shields.io/coveralls/shannonmoeller/ygor/master.svg?style=flat-square
 [coveralls-url]: https://coveralls.io/r/shannonmoeller/ygor
 [downloads-img]: http://img.shields.io/npm/dm/ygor.svg?style=flat-square
-[gitter-img]:    http://img.shields.io/badge/gitter-join_chat-1dce73.svg?style=flat-square
-[gitter-url]:    https://gitter.im/shannonmoeller/shannonmoeller
 [npm-img]:       http://img.shields.io/npm/v/ygor.svg?style=flat-square
 [npm-url]:       https://npmjs.org/package/ygor
 [travis-img]:    http://img.shields.io/travis/shannonmoeller/ygor.svg?style=flat-square
