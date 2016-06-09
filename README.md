@@ -1,4 +1,4 @@
-[![ygor](https://cdn.rawgit.com/shannonmoeller/ygor/7b58826/logo.svg)](https://github.com/shannonmoeller/ygor#readme)
+[![ygor](https://cdn.rawgit.com/shannonmoeller/ygor/0d33f40/media/logo.svg)](https://github.com/shannonmoeller/ygor#readme)
 
 [![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url] [![Build Status][travis-img]][travis-url] [![Coverage Status][coveralls-img]][coveralls-url] [![Chat][gitter-img]][gitter-url] [![Tip][tip-img]][tip-url]
 
