@@ -190,9 +190,9 @@ ygor
 Then execute subtasks by passing the parent task name as the first argument and the child task name as the second.
 
     $ node make a 2
-    hello from child A2
+    hi from child A2
     $ node make b 1
-    hello from child B1
+    hi from child B1
 
 ## That's It?
 
