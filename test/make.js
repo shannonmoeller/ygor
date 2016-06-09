@@ -1,6 +1,6 @@
 'use strict';
 
-var ygor = require('./index');
+var ygor = require('../index');
 
 function dflt() {
 	console.log('should run default task');

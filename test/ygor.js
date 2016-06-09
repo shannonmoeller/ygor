@@ -2,9 +2,11 @@
 
 var test = require('whim/test');
 var exec = require('child_process').exec;
-var ygor = require('./index');
+var ygor = require('../index');
 
 test('ygor', function (t) {
+	process.chdir(__dirname);
+
 	t.plan(29);
 
 	t.equal(typeof ygor.cli, 'object');
