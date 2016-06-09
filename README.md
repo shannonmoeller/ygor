@@ -2,7 +2,7 @@
 
 [![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url] [![Build Status][travis-img]][travis-url] [![Coverage Status][coveralls-img]][coveralls-url] [![Chat][gitter-img]][gitter-url] [![Tip][tip-img]][tip-url]
 
-Ygor is yet another JavaScript task runner. For when `npm run` isn't enough and everything else is too much.
+JavaScript task runner. For when `npm run` isn't enough and everything else is too much.
 
 ## Install
 
