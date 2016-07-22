@@ -33,15 +33,16 @@
     "chalk": "^1.1.3",
     "cli-columns": "^1.0.6",
     "minimist": "^1.2.0",
+    "npm-path": "^2.0.2",
     "object-assign": "^4.1.0"
   },
   "devDependencies": {
-    "whim": "^3.0.11"
+    "whim": "^4.1.0"
   },
   "scripts": {
-    "coveralls": "whim test report",
     "pretest": "whim lint",
-    "test": "whim test"
+    "test": "whim test",
+    "report": "whim test report"
   },
   "engines": {
     "node": ">= 0.12.0"

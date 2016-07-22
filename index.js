@@ -1,10 +1,12 @@
 'use strict';
 
 var path = require('path');
+var execSync = require('child_process').execSync;
 var assign = require('object-assign');
 var chalk = require('chalk');
 var columns = require('cli-columns');
 var minimist = require('minimist');
+var npmPath = require('npm-path');
 
 var script = path.basename(process.argv[1]);
 var cli = minimist(process.argv.slice(2));
@@ -16,8 +18,8 @@ function noop(val) {
 function ygor(options) {
 	var promise;
 	var tasks = Object.create(null);
-	var localOptions = options || cli;
-	var isVerbose = localOptions.v || localOptions.verbose;
+	var ygorOptions = options || cli;
+	var isVerbose = ygorOptions.v || ygorOptions.verbose;
 
 	function sub(opts) {
 		return ygor(opts);
@@ -25,6 +27,25 @@ function ygor(options) {
 
 	function error(err) {
 		console.error(err && err.stack || err);
+
+		return sub;
+	}
+
+	function sh(command, opts) {
+		var env = assign({}, process.env);
+		var shOptions = assign({}, opts);
+
+		if (typeof command !== 'string') {
+			throw new Error('Command must be a string.');
+		}
+
+		// Ensure PATH includes all ancestral `./node_modules/.bin` dirs
+		env[npmPath.PATH] = npmPath.getSync();
+
+		// Honor overrides from options object
+		assign(env, shOptions.env);
+
+		execSync(command, assign({ stdio: 'inherit' }, shOptions, { env: env }));
 
 		return sub;
 	}
@@ -66,7 +87,7 @@ function ygor(options) {
 		}
 
 		if (!arguments.length) {
-			localName = localOptions._.shift();
+			localName = ygorOptions._.shift();
 		}
 
 		localName = localName || 'default';
@@ -80,7 +101,7 @@ function ygor(options) {
 		timeEnd = isVerbose ? time(localName) : noop;
 
 		return Promise
-			.resolve(tasks[localName](localOptions, sub))
+			.resolve(tasks[localName](ygorOptions, sub))
 			.catch(error)
 			.then(timeEnd);
 	}
@@ -94,6 +115,7 @@ function ygor(options) {
 	return assign(sub, {
 		cli: cli,
 		error: error,
+		sh: sh,
 		time: time,
 		task: task,
 		run: run,

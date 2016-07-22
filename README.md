@@ -80,62 +80,7 @@ Then run it with [esprev](https://github.com/shannonmoeller/esprev) or [babel-no
     $ es make cover
     $ babel-node make cover
 
-## API
-
-### `ygor.cli`
-
-Command-line arguments as parsed by [minimist](http://npm.im/minimist).
-
-### `ygor.task(name, callback) : ygor`
-
-- `name` `{String}` Unique task identifier.
-- `callback` `{Function(cli, ygor)}` Function to run when the task is invoked.
-
-Registers a task with Ygor. The callback provided will be executed with `ygor.cli` as the first argument and `ygor` as the second.
-
-### `ygor.error(err) : ygor`
-
-- `err` `{Error|String}` Error to be logged.
-
-Logs an error, including a stack trace when available. This is used internally to handle catchable errors. Some errors can't be caught by Ygor (such as errors in callbacks), so you may use this as a catch handler to keep the process from terminating.
-
-```js
-chokidar
-    .watch('**/*.js')
-    .on('change', function () {
-        try {
-            someSyncTask();
-        } catch (err) {
-            ygor.error(err);
-        }
-
-        someAsyncTask()
-            .then(successHandler)
-            .catch(ygor.error);
-    });
-```
-
-### `ygor.run(name) : Promise`
-
-Tells Ygor to run a task. This is called automatically and generally shouldn't be invoked directly. Ygor recommends that tasks be declared as standalone functions.
-
-```js
-// Good
-
-function foo() {
-    // do something
-}
-
-ygor.task('foo', foo);
-
-// Bad
-
-ygor.task('bar', function () {
-    // do something
-});
-```
-
-## Deferred Tasks and Subtasks
+### Deferred Tasks
 
 If you need to define tasks asynchronously, you may call `ygor()` as a function at a later time.
 
@@ -148,6 +93,8 @@ TaskAPI
             .task('bar', tasks.bar);
     });
 ```
+
+### Subtasks
 
 You may also call `ygor()` within a task callback to create subtasks.
 
@@ -194,9 +141,94 @@ Then execute subtasks by passing the parent task name as the first argument and 
     $ node make b 1
     hi from child B1
 
+## API
+
+### `ygor.cli`
+
+Command-line arguments as parsed by [minimist](http://npm.im/minimist).
+
+### `ygor.task(name, callback) : ygor`
+
+- `name` `{String}` Unique task identifier.
+- `callback` `{Function(cli, ygor)}` Function to run when the task is invoked.
+
+Registers a task with Ygor. The callback provided will be executed with `ygor.cli` as the first argument and `ygor` as the second.
+
+```js
+function foo(cli, ygor) {
+    console.log(cli, ygor);
+}
+
+ygor.task('foo', foo);
+```
+
+### `ygor.error(err) : ygor`
+
+- `err` `{Error|String}` Error to be logged.
+
+Logs an error, including a stack trace when available. This is used internally to handle catchable errors. Some errors can't be caught by Ygor (such as errors in callbacks), so you may use this as a catch handler to keep the process from terminating.
+
+```js
+chokidar
+    .watch('**/*.js')
+    .on('change', function () {
+        try {
+            someSyncTask();
+        } catch (err) {
+            ygor.error(err);
+        }
+
+        someAsyncTask()
+            .then(successHandler)
+            .catch(ygor.error);
+    });
+```
+
+### `ygor.run(name) : Promise`
+
+Tells Ygor to run a task. This is used internally and generally shouldn't be invoked directly. Ygor recommends that tasks be declared as standalone functions.
+
+```js
+// Avoid
+
+ygor.task('foo', function () {
+    // do something
+});
+
+ygor.task('bar', function (cli, ygor) {
+    ygor.run('foo');
+});
+
+// Recommended
+
+function foo() {
+    // do something
+}
+
+function bar() {
+    foo();
+}
+
+ygor
+    .task('foo', foo)
+    .task('bar', bar);
+```
+
+### `ygor.shell(command, options) : ygor`
+
+Sometimes a shell command really is the best API, but maybe you'd like to keep all of your tasks in one tidy location. Ygor can execute arbitrary commands, ensuring that local and parent `./node_modules/.bin` dirs are in the PATH. Accepts the same `options` as `child_process.execSync()`.
+
+```js
+function lint() {
+    ygor.shell('eslint "{src,test}/**/*.js"');
+}
+
+ygor.task('lint', lint);
+```
+
 ## That's It?
 
-Ygor doesn't know how to find, edit, or watch files. NPM is his plugin system. He requests that you select the right tools for him. These look good:
+Ygor doesn't know how to find, edit, or watch files. NPM is his plugin system. He requests that you select the right tools for him. You might like [`spiff`](http://npm.im/spiff), but these look good too:
 
 ### Finding Files
 
