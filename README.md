@@ -190,6 +190,8 @@ chokidar
 
 ### `ygor.run(name) : Promise`
 
+- `name` `{String}` Unique task identifier.
+
 Tells Ygor to run a task. This is used internally and generally shouldn't be invoked directly. Ygor recommends that tasks be declared as standalone functions.
 
 ```js
