@@ -153,7 +153,10 @@ ygor.task('foo', foo);
 
 ### `ygor.shell(command, options) : ygor`
 
-Sometimes a shell command really is the best API, but maybe you'd like to keep all of your tasks in one tidy location. Ygor can execute arbitrary commands, ensuring that local and parent `./node_modules/.bin` dirs are in the PATH. Accepts the same `options` as `child_process.execSync()`.
+- `command` `{String}` Shell command to execute.
+- `options` `{Object}` Same options as `child_process.execSync()`.
+
+Sometimes a shell command really is the best API, but maybe you'd like to keep all of your tasks in one tidy location. Ygor can execute arbitrary commands, ensuring that local and parent `./node_modules/.bin` dirs are in the PATH.
 
 ```js
 function lint() {
