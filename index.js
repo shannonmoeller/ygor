@@ -15,6 +15,19 @@ function noop(val) {
 	return val;
 }
 
+function time(name) {
+	var localName = `[${chalk.green(script)}] ${chalk.magenta(name)}`;
+
+	console.log(`${localName}...`);
+	console.time(localName);
+
+	return function timeEnd(val) {
+		console.timeEnd(localName);
+
+		return val;
+	};
+}
+
 function ygor(options) {
 	var promise;
 	var tasks = Object.create(null);
@@ -23,44 +36,6 @@ function ygor(options) {
 
 	function sub(opts) {
 		return ygor(opts);
-	}
-
-	function error(err) {
-		console.error(err && err.stack || err);
-
-		return sub;
-	}
-
-	function sh(command, opts) {
-		var env = assign({}, process.env);
-		var shOptions = assign({}, opts);
-
-		if (typeof command !== 'string') {
-			throw new Error('Command must be a string.');
-		}
-
-		// Ensure PATH includes all ancestral `./node_modules/.bin` dirs
-		env[npmPath.PATH] = npmPath.getSync();
-
-		// Honor overrides from options object
-		assign(env, shOptions.env);
-
-		execSync(command, assign({ stdio: 'inherit' }, shOptions, { env: env }));
-
-		return sub;
-	}
-
-	function time(name) {
-		var localName = '[' + chalk.green(script) + '] ' + chalk.magenta(name);
-
-		console.log(localName + '...');
-		console.time(localName);
-
-		return function timeEnd(val) {
-			console.timeEnd(localName);
-
-			return val;
-		};
 	}
 
 	function task(name, callback) {
@@ -73,6 +48,27 @@ function ygor(options) {
 		}
 
 		tasks[name] = callback;
+
+		return sub;
+	}
+
+	function shell(command, opts) {
+		if (typeof command !== 'string') {
+			throw new Error('Command must be a string.');
+		}
+
+		const shOptions = assign({ stdio: 'inherit' }, opts);
+		const envPath = npmPath.getSync({ cwd: shOptions.cwd });
+
+		shOptions.env = assign({}, process.env, { [npmPath.PATH]: envPath }, shOptions.env);
+
+		execSync(command, shOptions);
+
+		return sub;
+	}
+
+	function error(err) {
+		console.error(err && err.stack || err);
 
 		return sub;
 	}
@@ -114,10 +110,10 @@ function ygor(options) {
 
 	return assign(sub, {
 		cli: cli,
-		error: error,
-		sh: sh,
-		time: time,
+
 		task: task,
+		shell: shell,
+		error: error,
 		run: run,
 
 		then: promise.then.bind(promise),

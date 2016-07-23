@@ -15,7 +15,9 @@
     "rake",
     "run",
     "runner",
-    "scripts"
+    "scripts",
+    "shell",
+    "start"
   ],
   "license": "MIT",
   "repository": "shannonmoeller/ygor",

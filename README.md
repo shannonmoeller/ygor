@@ -99,21 +99,10 @@ TaskAPI
 You may also call `ygor()` within a task callback to create subtasks.
 
 ```js
-function childA1() {
-    console.log('hi from child A1');
-}
-
-function childA2() {
-    console.log('hi from child A2');
-}
-
-function childB1() {
-    console.log('hi from child B1');
-}
-
-function childB2() {
-    console.log('hi from child B2');
-}
+function childA1() { console.log('hi from a1'); }
+function childA2() { console.log('hi from a2'); }
+function childB1() { console.log('hi from b1'); }
+function childB2() { console.log('hi from b2'); }
 
 function parentA() {
     // Subtasks
@@ -137,9 +126,9 @@ ygor
 Then execute subtasks by passing the parent task name as the first argument and the child task name as the second.
 
     $ node make a 2
-    hi from child A2
+    hi from a2
     $ node make b 1
-    hi from child B1
+    hi from b1
 
 ## API
 
@@ -160,6 +149,18 @@ function foo(cli, ygor) {
 }
 
 ygor.task('foo', foo);
+```
+
+### `ygor.shell(command, options) : ygor`
+
+Sometimes a shell command really is the best API, but maybe you'd like to keep all of your tasks in one tidy location. Ygor can execute arbitrary commands, ensuring that local and parent `./node_modules/.bin` dirs are in the PATH. Accepts the same `options` as `child_process.execSync()`.
+
+```js
+function lint() {
+    ygor.shell('eslint "{src,test}/**/*.js"');
+}
+
+ygor.task('lint', lint);
 ```
 
 ### `ygor.error(err) : ygor`
@@ -212,18 +213,6 @@ function bar() {
 ygor
     .task('foo', foo)
     .task('bar', bar);
-```
-
-### `ygor.shell(command, options) : ygor`
-
-Sometimes a shell command really is the best API, but maybe you'd like to keep all of your tasks in one tidy location. Ygor can execute arbitrary commands, ensuring that local and parent `./node_modules/.bin` dirs are in the PATH. Accepts the same `options` as `child_process.execSync()`.
-
-```js
-function lint() {
-    ygor.shell('eslint "{src,test}/**/*.js"');
-}
-
-ygor.task('lint', lint);
 ```
 
 ## That's It?
