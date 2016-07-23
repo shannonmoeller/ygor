@@ -45,6 +45,6 @@
     "report": "whim test report"
   },
   "engines": {
-    "node": ">= 0.12.0"
+    "node": ">= 4.2.0"
   }
 }
