@@ -201,8 +201,8 @@ ygor.task('foo', function () {
     // do something
 });
 
-ygor.task('bar', function (cli, ygor) {
-    ygor.run('foo');
+ygor.task('bar', function (cli, y) {
+    y.run('foo');
 });
 
 // Recommended
