@@ -1,6 +1,6 @@
 {
   "name": "ygor",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Task runner. For when 'npm run' isn't enough and everything else is too much.",
   "keywords": [
     "broccoli",
