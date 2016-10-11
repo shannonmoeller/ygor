@@ -39,7 +39,7 @@
     "object-assign": "^4.1.0"
   },
   "devDependencies": {
-    "whim": "^4.1.0"
+    "whim": "^4.1.3"
   },
   "scripts": {
     "pretest": "whim lint",
