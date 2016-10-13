@@ -1,6 +1,6 @@
 [![ygor](https://cdn.rawgit.com/shannonmoeller/ygor/0d33f40/media/logo.svg)](https://github.com/shannonmoeller/ygor#readme)
 
-[![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url] [![Build Status][travis-img]][travis-url] [![Coverage Status][coveralls-img]][coveralls-url] [![Tip][tip-img]][tip-url]
+[![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url] [![Build Status][travis-img]][travis-url] [![Coverage Status][coveralls-img]][coveralls-url] [![Tip][amazon-img]][amazon-url]
 
 JavaScript task runner. For when `npm run` isn't enough and everything else is too much.
 
@@ -258,12 +258,12 @@ Ygor doesn't know how to find, edit, or watch files. NPM is his plugin system. H
 
 Licensed under [MIT](http://shannonmoeller.com/mit.txt)
 
-[tip-img]:    https://img.shields.io/badge/tip-jar-yellow.svg?style=flat-square
-[tip-url]:    https://www.amazon.com/gp/registry/wishlist/1VQM9ID04YPC5?sort=universal-price
+[amazon-img]:    https://img.shields.io/badge/amazon-tip_jar-yellow.svg?style=flat-square
+[amazon-url]:    https://www.amazon.com/gp/registry/wishlist/1VQM9ID04YPC5?sort=universal-price
 [coveralls-img]: http://img.shields.io/coveralls/shannonmoeller/ygor/master.svg?style=flat-square
 [coveralls-url]: https://coveralls.io/r/shannonmoeller/ygor
 [downloads-img]: http://img.shields.io/npm/dm/ygor.svg?style=flat-square
 [npm-img]:       http://img.shields.io/npm/v/ygor.svg?style=flat-square
 [npm-url]:       https://npmjs.org/package/ygor
-[travis-img]:    http://img.shields.io/travis/shannonmoeller/ygor.svg?style=flat-square
+[travis-img]:    http://img.shields.io/travis/shannonmoeller/ygor/master.svg?style=flat-square
 [travis-url]:    https://travis-ci.org/shannonmoeller/ygor
