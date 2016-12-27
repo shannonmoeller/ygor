@@ -151,7 +151,7 @@ function foo(cli, ygor) {
 ygor.task('foo', foo);
 ```
 
-### `ygor.shell(command, options) : ygor`
+### `ygor.shell(command, options) : Promise`
 
 - `command` `{String}` Shell command to execute.
 - `options` `{Object}` Same options as `child_process.execSync()`.
@@ -160,7 +160,7 @@ Sometimes a shell command really is the best API, but maybe you'd like to keep a
 
 ```js
 function lint() {
-    ygor.shell('eslint "{src,test}/**/*.js"');
+    return ygor.shell('eslint "{src,test}/**/*.js"');
 }
 
 ygor.task('lint', lint);
