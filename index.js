@@ -62,9 +62,14 @@ function ygor(options) {
 
 		shOptions.env = assign({}, process.env, { [npmPath.PATH]: envPath }, shOptions.env);
 
-		execSync(command, shOptions);
-
-		return sub;
+		return new Promise(function (resolve, reject) {
+			try {
+				resolve(execSync(command, shOptions));
+			}
+			catch (err) {
+				reject(err);
+			}
+		});
 	}
 
 	function error(err) {

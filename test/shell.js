@@ -1,9 +1,20 @@
 import test from 'whim/lib/test';
 import ygor from '../index';
 
-test('shell', async t => {
-	t.doesNotThrow(() => ygor.shell('date'));
+test('shell pass', async t => {
+	t.plan(1);
 
-	t.throws(() => ygor.shell(), /string/i);
-	t.throws(() => ygor.shell('/dev/null/null'), /null/i);
+	return ygor
+		.shell('date')
+		.then(() => t.pass('yep'))
+		.catch(() => t.fail('nope'));
+});
+
+test('shell fail', async t => {
+	t.plan(1);
+
+	return ygor
+		.shell('/dev/null/null')
+		.then(() => t.fail('nope'))
+		.catch(() => t.pass('yep'));
 });
