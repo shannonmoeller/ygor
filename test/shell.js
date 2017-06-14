@@ -5,7 +5,7 @@ test('shell pass', async t => {
 	t.plan(1);
 
 	await ygor
-		.shell('date')
+		.shell('echo bar')
 		.then(() => t.pass('yep'))
 		.catch(() => t.fail('nope'));
 });
