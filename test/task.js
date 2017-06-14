@@ -1,7 +1,9 @@
-import test from 'whim/lib/test';
+import test from 'ava';
 import ygor from '../index';
 
-test('task', async t => {
+test('task', t => {
+	t.plan(2);
+
 	t.throws(() => ygor.task(), /string/i);
 	t.throws(() => ygor.task('foo'), /function/i);
 });

@@ -1,6 +1,8 @@
-import test from 'whim/lib/test';
+import test from 'ava';
 import ygor from '../index';
 
-test('error', async t => {
-	t.doesNotThrow(() => ygor.error());
+test('error', t => {
+	t.plan(1);
+
+	t.notThrows(() => ygor.error());
 });

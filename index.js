@@ -1,27 +1,27 @@
 'use strict';
 
-var path = require('path');
-var execSync = require('child_process').execSync;
-var assign = require('object-assign');
-var chalk = require('chalk');
-var columns = require('cli-columns');
-var minimist = require('minimist');
-var npmPath = require('npm-path');
+const path = require('path');
+const execSync = require('child_process').execSync;
+const assign = require('object-assign');
+const chalk = require('chalk');
+const columns = require('cli-columns');
+const minimist = require('minimist');
+const npmPath = require('npm-path');
 
-var script = path.basename(process.argv[1]);
-var cli = minimist(process.argv.slice(2));
+const script = path.basename(process.argv[1]);
+const cli = minimist(process.argv.slice(2));
 
 function noop(val) {
 	return val;
 }
 
 function time(name) {
-	var localName = `[${chalk.green(script)}] ${chalk.magenta(name)}`;
+	const localName = `[${chalk.green(script)}] ${chalk.magenta(name)}`;
 
 	console.log(`${localName}...`);
 	console.time(localName);
 
-	return function timeEnd(val) {
+	return val => {
 		console.timeEnd(localName);
 
 		return val;
@@ -29,10 +29,9 @@ function time(name) {
 }
 
 function ygor(options) {
-	var promise;
-	var tasks = Object.create(null);
-	var ygorOptions = options || cli;
-	var isVerbose = ygorOptions.v || ygorOptions.verbose;
+	const tasks = Object.create(null);
+	const ygorOptions = options || cli;
+	const isVerbose = ygorOptions.v || ygorOptions.verbose;
 
 	function sub(opts) {
 		return ygor(opts);
@@ -40,11 +39,11 @@ function ygor(options) {
 
 	function task(name, callback) {
 		if (typeof name !== 'string') {
-			throw new Error('Task name must be a string.');
+			throw new TypeError('Task name must be a string.');
 		}
 
 		if (typeof callback !== 'function') {
-			throw new Error('Task callback must be a function.');
+			throw new TypeError('Task callback must be a function.');
 		}
 
 		tasks[name] = callback;
@@ -54,40 +53,38 @@ function ygor(options) {
 
 	function shell(command, opts) {
 		if (typeof command !== 'string') {
-			throw new Error('Command must be a string.');
+			throw new TypeError('Command must be a string.');
 		}
 
-		const shOptions = assign({ stdio: 'inherit' }, opts);
-		const envPath = npmPath.getSync({ cwd: shOptions.cwd });
+		const shOptions = assign({stdio: 'inherit'}, opts);
+		const envPath = npmPath.getSync({cwd: shOptions.cwd});
 
-		shOptions.env = assign({}, process.env, { [npmPath.PATH]: envPath }, shOptions.env);
+		shOptions.env = assign({}, process.env, {[npmPath.PATH]: envPath}, shOptions.env);
 
-		return new Promise(function (resolve, reject) {
+		return new Promise((resolve, reject) => {
 			try {
 				resolve(execSync(command, shOptions));
-			}
-			catch (err) {
+			} catch (err) {
 				reject(err);
 			}
 		});
 	}
 
 	function error(err) {
-		console.error(err && err.stack || err);
+		console.error((err && err.stack) || err);
 
 		return sub;
 	}
 
 	function run(name) {
-		var timeEnd;
-		var localName = name;
-		var keys = Object.keys(tasks);
+		let localName = name;
+		const keys = Object.keys(tasks);
 
-		if (!keys.length) {
+		if (keys.length === 0) {
 			return null;
 		}
 
-		if (!arguments.length) {
+		if (arguments.length === 0) {
 			localName = ygorOptions._.shift();
 		}
 
@@ -99,7 +96,7 @@ function ygor(options) {
 			return null;
 		}
 
-		timeEnd = isVerbose ? time(localName) : noop;
+		const timeEnd = isVerbose ? time(localName) : noop;
 
 		return Promise
 			.resolve(tasks[localName](ygorOptions, sub))
@@ -107,22 +104,20 @@ function ygor(options) {
 			.then(timeEnd);
 	}
 
-	promise = new Promise(function (resolve) {
-		process.nextTick(function () {
+	const promise = new Promise(resolve => {
+		process.nextTick(() => {
 			resolve(run());
 		});
 	});
 
 	return assign(sub, {
-		cli: cli,
-
-		task: task,
-		shell: shell,
-		error: error,
-		run: run,
-
+		cli,
+		task,
+		shell,
+		error,
+		run,
 		then: promise.then.bind(promise),
-		catch: promise.catch.bind(promise),
+		catch: promise.catch.bind(promise)
 	});
 }
 

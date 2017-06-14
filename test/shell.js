@@ -1,10 +1,10 @@
-import test from 'whim/lib/test';
+import test from 'ava';
 import ygor from '../index';
 
 test('shell pass', async t => {
 	t.plan(1);
 
-	return ygor
+	await ygor
 		.shell('date')
 		.then(() => t.pass('yep'))
 		.catch(() => t.fail('nope'));
@@ -13,7 +13,7 @@ test('shell pass', async t => {
 test('shell fail', async t => {
 	t.plan(1);
 
-	return ygor
+	await ygor
 		.shell('/dev/null/null')
 		.then(() => t.fail('nope'))
 		.catch(() => t.pass('yep'));

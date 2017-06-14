@@ -1,8 +1,8 @@
-import test from 'whim/lib/test';
+import test from 'ava';
 import ygor from '../index';
 
-test('run', t => {
-	t.plan(3);
+test('run known', t => {
+	t.plan(2);
 
 	const y = ygor();
 
@@ -10,13 +10,15 @@ test('run', t => {
 		t.pass('should run');
 	}
 
-	setTimeout(() => {
-		t.doesNotThrow(() => y.run('foo'));
-	});
+	y.task('foo', foo);
 
-	setTimeout(() => {
-		y.task('foo', foo);
+	t.notThrows(() => y.run('foo'));
+});
 
-		t.doesNotThrow(() => y.run('foo'));
-	});
+test('run unknown', t => {
+	t.plan(1);
+
+	const y = ygor();
+
+	t.notThrows(() => y.run('foo'));
 });
