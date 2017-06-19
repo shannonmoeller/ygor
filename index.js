@@ -2,7 +2,6 @@
 
 const path = require('path');
 const execSync = require('child_process').execSync;
-const assign = require('object-assign');
 const chalk = require('chalk');
 const columns = require('cli-columns');
 const minimist = require('minimist');
@@ -56,10 +55,15 @@ function ygor(options) {
 			throw new TypeError('Command must be a string.');
 		}
 
-		const shOptions = assign({stdio: 'inherit'}, opts);
+		const shOptions = Object.assign({stdio: 'inherit'}, opts);
 		const envPath = npmPath.getSync({cwd: shOptions.cwd});
 
-		shOptions.env = assign({}, process.env, {[npmPath.PATH]: envPath}, shOptions.env);
+		shOptions.env = Object.assign(
+			{},
+			process.env,
+			{[npmPath.PATH]: envPath},
+			shOptions.env
+		);
 
 		return new Promise((resolve, reject) => {
 			try {
@@ -110,7 +114,7 @@ function ygor(options) {
 		});
 	});
 
-	return assign(sub, {
+	return Object.assign(sub, {
 		cli,
 		task,
 		shell,

@@ -1,7 +1,7 @@
 import test from 'ava';
 import ygor from '../index';
 
-test('run known', t => {
+test('should run known task', t => {
 	t.plan(2);
 
 	const y = ygor();
@@ -15,7 +15,7 @@ test('run known', t => {
 	t.notThrows(() => y.run('foo'));
 });
 
-test('run unknown', t => {
+test('should list tasks given unknown', t => {
 	t.plan(1);
 
 	const y = ygor();

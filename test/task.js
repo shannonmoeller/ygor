@@ -1,7 +1,7 @@
 import test from 'ava';
 import ygor from '../index';
 
-test('task', t => {
+test('should throw on invalid input', t => {
 	t.plan(2);
 
 	t.throws(() => ygor.task(), /string/i);
