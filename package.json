@@ -1,6 +1,6 @@
 {
   "name": "ygor",
-  "version": "4.0.3",
+  "version": "4.0.4",
   "description": "Task runner. For when 'npm run' isn't enough and everything else is too much.",
   "scripts": {
     "report": "nyc report -r text-lcov | coveralls",
