@@ -75,9 +75,10 @@ ygor
     .task('test', test);
 ```
 
-Then run it with [esprev](https://github.com/shannonmoeller/esprev) or [babel-node](http://babeljs.io/docs/usage/cli/#babel-node) ([presets](http://babeljs.io/docs/plugins/#official-presets) and [plugin](transform-async-to-generator) required).
+Then run it with [Node.js 8+](http://node.green/#ES2017-features-async-functions), [async-node](http://npm.im/async-to-gen#use-async-node), or [babel-node](http://npm.im/babel-cli) ([plugin](http://npm.im/babel-plugin-transform-async-to-generator) required).
 
-    $ es make cover
+    $ node make cover
+    $ async-node make cover
     $ babel-node make cover
 
 ### Deferred Tasks
