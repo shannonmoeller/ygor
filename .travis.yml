@@ -4,5 +4,10 @@ node_js:
   - '8'
   - '6'
   - '4'
-after_script:
+cache:
+  directories:
+    - node_modules
+before_script:
+  - npm prune
+after_success:
   - npm run report
