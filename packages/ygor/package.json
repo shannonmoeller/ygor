@@ -1,0 +1,38 @@
+{
+  "name": "ygor",
+  "version": "0.0.0",
+  "description": "For when 'npm run' isn't enough and everything else is too much.",
+  "keywords": [
+    "broccoli",
+    "cake",
+    "grunt",
+    "gulp",
+    "jake",
+    "make",
+    "nake",
+    "npm",
+    "rake",
+    "run",
+    "runner",
+    "scripts",
+    "shell",
+    "start"
+  ],
+  "author": "Shannon Moeller <me@shannonmoeller.com> (http://shannonmoeller.com)",
+  "homepage": "https://github.com/shannonmoeller/ygor#readme",
+  "repository": "shannonmoeller/ygor",
+  "license": "MIT",
+  "main": "dist/ygor.js",
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@ygor/file": "*",
+    "@ygor/files": "*",
+    "@ygor/tasks": "*",
+    "execa": "^0.8.0"
+  },
+  "engines": {
+    "node": ">= 4"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "name": "@ygor/tasks",
+  "version": "0.0.0",
+  "description": "Task runner.",
+  "keywords": [
+    "broccoli",
+    "cake",
+    "grunt",
+    "gulp",
+    "jake",
+    "make",
+    "nake",
+    "npm",
+    "rake",
+    "run",
+    "runner",
+    "scripts",
+    "shell",
+    "start"
+  ],
+  "author": "Shannon Moeller <me@shannonmoeller> (http://shannonmoeller.com)",
+  "homepage": "https://github.com/shannonmoeller/ygor/tree/master/packages/tasks#readme",
+  "repository": "shannonmoeller/ygor",
+  "license": "MIT",
+  "main": "dist/tasks.js",
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "cli-columns": "^3.1.2",
+    "minimist": "^1.2.0",
+    "time-diff": "^0.3.1"
+  },
+  "engines": {
+    "node": ">= 4"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "@ygor/list",
+  "version": "0.0.0",
+  "description": "A virtual list object.",
+  "keywords": [
+    "ygor",
+    "fs",
+    "io"
+  ],
+  "author": "Shannon Moeller <me@shannonmoeller> (http://shannonmoeller.com)",
+  "homepage": "https://github.com/shannonmoeller/ygor/tree/master/packages/list#readme",
+  "repository": "shannonmoeller/ygor",
+  "license": "MIT",
+  "main": "dist/list.js",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">= 4"
+  }
+}

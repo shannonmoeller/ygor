@@ -1,0 +1,24 @@
+{
+  "name": "@ygor/files",
+  "version": "0.0.0",
+  "description": "A bulk file editor.",
+  "keywords": [
+    "ygor",
+    "fs",
+    "io"
+  ],
+  "author": "Shannon Moeller <me@shannonmoeller> (http://shannonmoeller.com)",
+  "homepage": "https://github.com/shannonmoeller/ygor/tree/master/packages/files#readme",
+  "repository": "shannonmoeller/ygor",
+  "license": "MIT",
+  "main": "dist/files.js",
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@ygor/file": "*",
+    "@ygor/list": "*",
+    "glob-parent": "^3.1.0",
+    "globby": "^6.1.0"
+  }
+}
