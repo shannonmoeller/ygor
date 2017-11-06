@@ -2,12 +2,6 @@
 
 [![Build Status][travis-img]][travis-url] [![Coverage Status][coveralls-img]][coveralls-url] [![Tip][amazon-img]][amazon-url]
 
-| [`ygor`](http://npm.im/ygor)               | Complete toolset.   |
-| [`@ygor/file`](http://npm.im/@ygor/file)   | File object.        |
-| [`@ygor/files`](http://npm.im/@ygor/files) | File transformer.   |
-| [`@ygor/list`](http://npm.im/@ygor/list)   | List-aware promise. |
-| [`@ygor/tasks`](http://npm.im/@ygor/tasks) | Task runner.        |
-
 ----
 
 © 2017 Shannon Moeller <me@shannonmoeller.com>
