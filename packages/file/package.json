@@ -1,6 +1,6 @@
 {
   "name": "@ygor/file",
-  "version": "5.0.0-2",
+  "version": "5.0.0-3",
   "description": "A virtual file object.",
   "keywords": [
     "ygor",
