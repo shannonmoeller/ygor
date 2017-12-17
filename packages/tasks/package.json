@@ -1,6 +1,6 @@
 {
   "name": "@ygor/tasks",
-  "version": "5.0.0-1",
+  "version": "5.0.0-2",
   "description": "Task runner.",
   "keywords": [
     "broccoli",
