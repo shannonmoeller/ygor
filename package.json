@@ -57,11 +57,8 @@
         {
           "targets": {
             "browsers": false,
-            "node": 4
-          },
-          "exclude": [
-            "transform-es2015-classes"
-          ]
+            "node": 6
+          }
         }
       ]
     ],
