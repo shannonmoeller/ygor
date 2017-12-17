@@ -45,9 +45,9 @@ suite('@ygor/files', ({ test }) => {
 		const f = await find('../../../src/**/*.js', { cwd: __dirname }).map(
 			toJSON
 		);
-		const g = await find('**/*.js', { cwd: `${__dirname}/../../../src` }).map(
-			toJSON
-		);
+		const g = await find('**/*.js', {
+			cwd: `${__dirname}/../../../src`
+		}).map(toJSON);
 
 		t.deepEqual(a, b);
 		t.deepEqual(a, c);
