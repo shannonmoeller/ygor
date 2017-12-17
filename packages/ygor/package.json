@@ -27,9 +27,9 @@
     "dist"
   ],
   "dependencies": {
-    "@ygor/file": "*",
-    "@ygor/files": "*",
-    "@ygor/tasks": "*",
+    "@ygor/file": "0.0.0",
+    "@ygor/files": "0.0.0",
+    "@ygor/tasks": "0.0.0",
     "execa": "^0.8.0"
   },
   "engines": {

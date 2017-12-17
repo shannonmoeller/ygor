@@ -6,6 +6,7 @@
   "repository": "shannonmoeller/ygor",
   "license": "MIT",
   "scripts": {
+    "lerna": "lerna",
     "build": "run-s build-*",
     "build-clean": "lerna exec -- del dist",
     "build-node": "lerna exec -- babel src -d dist",
