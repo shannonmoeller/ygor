@@ -26,6 +26,9 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "cli-columns": "^3.1.2",
     "minimist": "^1.2.0",

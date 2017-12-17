@@ -15,10 +15,16 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@ygor/file": "^5.0.0-1",
     "@ygor/list": "^5.0.0-1",
     "glob-parent": "^3.1.0",
     "globby": "^7.1.1"
+  },
+  "engines": {
+    "node": ">= 4"
   }
 }

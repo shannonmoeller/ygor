@@ -14,5 +14,11 @@
   "main": "dist/file.js",
   "files": [
     "dist"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">= 4"
+  }
 }
