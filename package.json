@@ -19,7 +19,7 @@
     "precommit": "run-s lint test build && git add .",
     "pretest": "run-s lint",
     "publish": "run-s precommit && lerna publish",
-    "publish-beta": "run-s precommit && lerna publish --npm-tag beta",
+    "publish-beta": "run-s precommit && lerna publish --npm-tag=beta",
     "postinstall": "lerna bootstrap"
   },
   "devDependencies": {

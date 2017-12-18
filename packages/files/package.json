@@ -1,6 +1,6 @@
 {
   "name": "@ygor/files",
-  "version": "5.0.0-3",
+  "version": "5.0.0-4",
   "description": "A bulk file editor.",
   "keywords": [
     "ygor",
@@ -19,8 +19,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@ygor/file": "^5.0.0-3",
-    "@ygor/list": "^5.0.0-3",
+    "@ygor/file": "^5.0.0-4",
+    "@ygor/list": "^5.0.0-4",
     "glob-parent": "^3.1.0",
     "globby": "^7.1.1"
   },
