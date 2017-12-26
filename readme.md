@@ -13,11 +13,7 @@
 	<a href="https://coveralls.io/r/shannonmoeller/ygor"><img src="http://img.shields.io/coveralls/shannonmoeller/ygor/master.svg?style=flat-square" alt="coverage status" /></a>
 </p>
 
-- [`ygor`](http://npm.im/ygor)               - Complete toolset.
-- [`@ygor/file`](http://npm.im/@ygor/file)   - File object.
-- [`@ygor/files`](http://npm.im/@ygor/files) - Multi-file transformer.
-- [`@ygor/list`](http://npm.im/@ygor/list)   - Array promise.
-- [`@ygor/tasks`](http://npm.im/@ygor/tasks) - Task runner.
+Ygor is a [toolkit](http://npm.im/ygor) consisting of a [task runner](http://npm.im/@ygor/tasks), a [file transformer](http://npm.im/@ygor/files), and [array promises](http://npm.im/@ygor/list). You can use it as a whole or only grab the parts you want.
 
 ----
 
