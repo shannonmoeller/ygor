@@ -13,6 +13,12 @@
 	<a href="https://coveralls.io/r/shannonmoeller/ygor"><img src="http://img.shields.io/coveralls/shannonmoeller/ygor/master.svg?style=flat-square" alt="coverage status" /></a>
 </p>
 
+- [`ygor`](http://npm.im/ygor)               - Complete toolset.
+- [`@ygor/file`](http://npm.im/@ygor/file)   - File object.
+- [`@ygor/files`](http://npm.im/@ygor/files) - Multi-file transformer.
+- [`@ygor/list`](http://npm.im/@ygor/list)   - Array promise.
+- [`@ygor/tasks`](http://npm.im/@ygor/tasks) - Task runner.
+
 ----
 
 © 2017 Shannon Moeller <me@shannonmoeller.com>

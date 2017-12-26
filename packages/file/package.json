@@ -1,11 +1,12 @@
 {
   "name": "@ygor/file",
   "version": "5.0.0-4",
-  "description": "A virtual file object.",
+  "description": "A transformable file object.",
   "keywords": [
     "ygor",
     "fs",
-    "io"
+    "io",
+    "spiff"
   ],
   "author": "Shannon Moeller <me@shannonmoeller> (http://shannonmoeller.com)",
   "homepage": "https://github.com/shannonmoeller/ygor/tree/master/packages/file#readme",

@@ -1,8 +1,9 @@
 {
   "name": "@ygor/tasks",
   "version": "5.0.0-4",
-  "description": "Task runner.",
+  "description": "A promising task runner.",
   "keywords": [
+    "ygor",
     "broccoli",
     "cake",
     "grunt",
@@ -16,7 +17,8 @@
     "runner",
     "scripts",
     "shell",
-    "start"
+    "start",
+    "task"
   ],
   "author": "Shannon Moeller <me@shannonmoeller> (http://shannonmoeller.com)",
   "homepage": "https://github.com/shannonmoeller/ygor/tree/master/packages/tasks#readme",

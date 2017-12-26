@@ -16,7 +16,8 @@
     "runner",
     "scripts",
     "shell",
-    "start"
+    "start",
+    "task"
   ],
   "author": "Shannon Moeller <me@shannonmoeller.com> (http://shannonmoeller.com)",
   "homepage": "https://github.com/shannonmoeller/ygor#readme",

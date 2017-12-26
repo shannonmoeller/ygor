@@ -1,11 +1,19 @@
 {
   "name": "@ygor/list",
   "version": "5.0.0-4",
-  "description": "A virtual list object.",
+  "description": "A promising array with iteration methods.",
   "keywords": [
     "ygor",
-    "fs",
-    "io"
+    "array",
+    "promise",
+    "filter",
+    "find",
+    "flat",
+    "flatten",
+    "list",
+    "map",
+    "reduce",
+    "some"
   ],
   "author": "Shannon Moeller <me@shannonmoeller> (http://shannonmoeller.com)",
   "homepage": "https://github.com/shannonmoeller/ygor/tree/master/packages/list#readme",
@@ -20,5 +28,13 @@
   },
   "engines": {
     "node": ">= 4"
+  },
+  "dependencies": {
+    "p-any": "^1.1.0",
+    "p-filter": "^1.0.0",
+    "p-locate": "^2.0.0",
+    "p-map": "^1.2.0",
+    "p-reduce": "^1.0.0",
+    "p-some": "^2.0.0"
   }
 }

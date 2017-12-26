@@ -1,11 +1,12 @@
 {
   "name": "@ygor/files",
   "version": "5.0.0-4",
-  "description": "A bulk file editor.",
+  "description": "A bulk file transformer.",
   "keywords": [
     "ygor",
     "fs",
-    "io"
+    "io",
+    "spiff"
   ],
   "author": "Shannon Moeller <me@shannonmoeller> (http://shannonmoeller.com)",
   "homepage": "https://github.com/shannonmoeller/ygor/tree/master/packages/files#readme",
