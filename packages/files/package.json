@@ -1,6 +1,6 @@
 {
   "name": "@ygor/files",
-  "version": "5.0.0-4",
+  "version": "5.0.0-5",
   "description": "A bulk file transformer.",
   "keywords": [
     "ygor",
@@ -20,8 +20,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@ygor/file": "^5.0.0-4",
-    "@ygor/list": "^5.0.0-4",
+    "@ygor/file": "^5.0.0-5",
+    "@ygor/list": "^5.0.0-5",
     "glob-parent": "^3.1.0",
     "globby": "^7.1.1"
   },
