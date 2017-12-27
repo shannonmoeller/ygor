@@ -10,5 +10,6 @@ install:
   - ps: Install-Product node $env:nodejs_version
   - npm install
   - npm prune
+  - npm build
 test_script:
   - npm test
