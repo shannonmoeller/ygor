@@ -30,8 +30,7 @@
   "dependencies": {
     "@ygor/file": "^5.0.0-4",
     "@ygor/files": "^5.0.0-4",
-    "@ygor/tasks": "^5.0.0-4",
-    "execa": "^0.8.0"
+    "@ygor/tasks": "^5.0.0-4"
   },
   "engines": {
     "node": ">=6"
