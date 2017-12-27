@@ -10,8 +10,8 @@ import Time from 'time-diff';
 
 const cli = minimist(process.argv.slice(2), {
 	alias: { quiet: 'q' },
-	boolean: ['run', 'quiet'],
-	default: { run: true, quiet: false }
+	boolean: ['quiet', 'run'],
+	default: { quiet: false, run: true }
 });
 
 /**

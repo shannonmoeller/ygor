@@ -15,14 +15,19 @@
 
 <br />
 
-[Ygor](http://npm.im/ygor) is a toolkit consisting of a [task runner](#task-runner) and a [file transformer](#file-transformer). Enjoy as a whole or a la carte. Leaning heavily on [promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises), Ygor works wonderfully with [`async` and `await`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) in Node.js 8 and above.
+[Ygor](http://npm.im/ygor) is a toolkit consisting of a [task runner](http://npm.im/@ygor/tasks) and a [file transformer](http://npm.im/@ygor/files). Enjoy as a whole or a la carte. Leaning heavily on [promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises), Ygor works wonderfully with [`async` and `await`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) in Node.js 8 and above.
 
+- [`ygor`](http://npm.im/ygor) - Entire toolkit.
+- [`@ygor/tasks`](http://npm.im/@ygor/tasks) - Task runner
+- [`@ygor/files`](http://npm.im/@ygor/files) - File transformer
+
+<!--
 ## Toolkit
 
 Using the toolkit looks something like this. Install [`ygor`](http://npm.im) with [npm](http://npm.im):
 
 ```sh
-$ npm install --save ygor
+$ npm install --save-dev ygor
 ```
 
 Create a JavaScript file with your tasks.
@@ -71,7 +76,7 @@ $ node make js --minified
 If you only want to run tasks, you can install [`@ygor/tasks`](http://npm.im/@ygor/tasks) directly with [npm](http://npm.im).
 
 ```sh
-$ npm install --save @ygor/tasks
+$ npm install --save-dev @ygor/tasks
 ```
 
 You can write some functions in a JavaScript file and tell Ygor about them.
@@ -115,7 +120,7 @@ See [`@ygor/tasks`](http://npm.im/@ygor/tasks) for complete documentation.
 If you only want to transform files, you can install [`@ygor/files`](http://npm.im/@ygor/files) directly with [npm](http://npm.im).
 
 ```sh
-$ npm install --save @ygor/files
+$ npm install --save-dev @ygor/files
 ```
 
 You can find files that match a glob pattern and iterate over them with [promise array methods](http://npm.im/@ygor/list#api). There are also some helpers to read and write files.
@@ -135,6 +140,7 @@ find('src/**/*.js')
 ```
 
 See [`@ygor/files`](http://npm.im/@ygor/files) for complete documentation.
+-->
 
 ----
 
