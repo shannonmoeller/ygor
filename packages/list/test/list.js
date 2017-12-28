@@ -30,18 +30,6 @@ suite('@ygor/list', ({ test }) => {
 	});
 });
 
-suite('@ygor/list/any', ({ test }) => {
-	test('should return fastest resolved item', async t => {
-		const a = await list([
-			delay('alpha', 10),
-			delay('beta', 5),
-			delay('gamma', 20)
-		]).any();
-
-		t.deepEqual(a, ['beta']);
-	});
-});
-
 suite('@ygor/list/filter', ({ test }) => {
 	test('should filter items', async t => {
 		const a = await list([
@@ -52,6 +40,41 @@ suite('@ygor/list/filter', ({ test }) => {
 		]).filter(x => x.startsWith('a'));
 
 		t.deepEqual(a, ['alpha', 'alfonzo']);
+	});
+});
+
+suite('@ygor/list/find', ({ test }) => {
+	test('should', async t => {
+		const a = await list([
+			delay('alpha', 10),
+			'beta',
+			'alfonzo',
+			delay('bart')
+		]).find(x => x.startsWith('a'));
+
+		t.deepEqual(a, ['alpha']);
+	});
+});
+
+suite('@ygor/list/first', ({ test }) => {
+	test('should return fastest resolved item', async t => {
+		const a = await list([
+			delay('alpha', 10),
+			delay('beta', 5),
+			delay('gamma', 20)
+		]).first();
+
+		t.deepEqual(a, ['beta']);
+	});
+
+	test('should return fastest resolved items', async t => {
+		const a = await list([
+			delay('alpha', 10),
+			'beta',
+			delay('gamma', 20)
+		]).first(2);
+
+		t.deepEqual(a, ['beta', 'alpha']);
 	});
 });
 
@@ -85,19 +108,6 @@ suite('@ygor/list/flatten', ({ test }) => {
 			'eta',
 			'theta'
 		]);
-	});
-});
-
-suite('@ygor/list/find', ({ test }) => {
-	test('should', async t => {
-		const a = await list([
-			delay('alpha', 10),
-			'beta',
-			'alfonzo',
-			delay('bart')
-		]).find(x => x.startsWith('a'));
-
-		t.deepEqual(a, ['alpha']);
 	});
 });
 
@@ -144,17 +154,5 @@ suite('@ygor/list/reduce', ({ test }) => {
 		);
 
 		t.deepEqual(a, ['abc']);
-	});
-});
-
-suite('@ygor/list/some', ({ test }) => {
-	test('should return fastest resolved items', async t => {
-		const a = await list([
-			delay('alpha', 10),
-			'beta',
-			delay('gamma', 20)
-		]).some({ count: 2 });
-
-		t.deepEqual(a, ['beta', 'alpha']);
 	});
 });

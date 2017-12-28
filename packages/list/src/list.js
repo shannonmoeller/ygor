@@ -4,12 +4,15 @@
  * @module list
  */
 
-import any from 'p-any';
 import filter from 'p-filter';
 import find from 'p-locate';
 import map from 'p-map';
 import reduce from 'p-reduce';
 import some from 'p-some';
+
+function first(arr, count = 1, options) {
+	return some(arr, { count, ...options });
+}
 
 function flatten(arr) {
 	return reduce(arr, (a, b) => a.concat(b), []);
@@ -19,7 +22,7 @@ function flatMap(...args) {
 	return map(...args).then(flatten);
 }
 
-const methods = { any, filter, find, flatMap, flatten, map, reduce, some };
+const methods = { filter, find, first, flatMap, flatten, map, reduce, some };
 const methodNames = Object.keys(methods);
 
 /**
