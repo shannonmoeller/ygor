@@ -1,6 +1,6 @@
 {
   "name": "ygor",
-  "version": "5.0.0-7",
+  "version": "5.0.0-8",
   "description": "For when 'npm run' isn't enough and everything else is too much.",
   "keywords": [
     "broccoli",
@@ -28,10 +28,10 @@
     "dist"
   ],
   "dependencies": {
-    "@ygor/file": "^5.0.0-7",
-    "@ygor/files": "^5.0.0-7",
-    "@ygor/list": "^5.0.0-7",
-    "@ygor/tasks": "^5.0.0-7"
+    "@ygor/file": "^5.0.0-8",
+    "@ygor/files": "^5.0.0-8",
+    "@ygor/list": "^5.0.0-8",
+    "@ygor/tasks": "^5.0.0-8"
   },
   "engines": {
     "node": ">=6"
