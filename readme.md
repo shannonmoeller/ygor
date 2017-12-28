@@ -8,18 +8,21 @@
 
 <p align="center">
   <a href="http://npm.im/ygor"><img src="https://img.shields.io/npm/v/ygor.svg?style=flat-square" alt="version" /></a>
-  <a href="http://npm.im/ygor"><img src="http://img.shields.io/npm/dm/ygor.svg?style=flat-square" alt="downloads" /></a>
   <a href="https://travis-ci.org/shannonmoeller/ygor"><img src="http://img.shields.io/travis/shannonmoeller/ygor.svg?style=flat-square" alt="build status" /></a>
   <a href="https://coveralls.io/r/shannonmoeller/ygor"><img src="http://img.shields.io/coveralls/shannonmoeller/ygor/master.svg?style=flat-square" alt="coverage status" /></a>
 </p>
 
 <br />
 
-[Ygor](https://github.com/shannonmoeller/ygor) is a toolkit consisting of a [task runner](http://npm.im/@ygor/tasks) and a [file transformer](http://npm.im/@ygor/files). Enjoy as a whole or a la carte. Leaning heavily on [promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises), Ygor works wonderfully with [`async` and `await`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) in Node.js 8 and above.
+Ygor is a no-frills [toolkit](http://npm.im/ygor) consisting of a [task runner](http://npm.im/@ygor/tasks) and a [file transformer](http://npm.im/@ygor/files). Enjoy as a whole or a la carte. Built on [promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises), Ygor works wonderfully with [`async` and `await`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) in Node.js 8 and above.
+
+Node is the CLI, npm is the plugin system. Go nuts.
 
 - [`ygor`](http://npm.im/ygor) - Toolkit
 - [`@ygor/tasks`](http://npm.im/@ygor/tasks) - Task runner
 - [`@ygor/files`](http://npm.im/@ygor/files) - File transformer
+- [`@ygor/file`](http://npm.im/@ygor/file) - Virtual file object
+- [`@ygor/list`](http://npm.im/@ygor/list) - Array-aware Promise
 
 <!--
 ## Toolkit

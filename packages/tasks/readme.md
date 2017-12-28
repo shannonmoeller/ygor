@@ -1,26 +1,28 @@
 # @ygor/tasks
 
-[![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url]
+[![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url] [![Build Status][travis-img]][travis-url] [![Coverage Status][coveralls-img]][coveralls-url]
 
-[Ygor](https://github.com/shannonmoeller/ygor) is a toolkit consisting of this task runner and a [file transformer](http://npm.im/@ygor/files). Enjoy as a whole or a la carte. Leaning heavily on [promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises), Ygor works wonderfully with [`async` and `await`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) in Node.js 8 and above.
+A no-frills task runner. Built on [promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises) to work wonderfully with [`async` and `await`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) in Node.js 8 and above. Part of the [Ygor toolkit](https://github.com/shannonmoeller/ygor#readme).
+
+Node is the CLI, npm is the plugin system. Go nuts.
 
 ## Install
 
-```
-$ npm install --save @ygor/tasks
+```console
+$ npm install --save-dev @ygor/tasks
 ```
 
 ## Usage
 
 Node is the CLI.
 
-```
-$ node <file> [task] [options]
+```man
+Usage: node <file> [task] [options]
 
   file   The filename of your script.
   task   The name of the task to run (default: 'default').
 
-Options
+Options:
 
   -q, --quiet   Suppress logging (default: false).
       --run     Auto-run task (default: true).
@@ -60,7 +62,7 @@ tasks
 
 To run a task, execute the file with [Node.js](https://nodejs.org) (or with [babel-node](http://babeljs.io/docs/usage/cli/#babel-node) if that's how you roll) and indicate which task to perform.
 
-```
+```console
 $ node make
 $ node make test
 $ node make cover
@@ -112,7 +114,7 @@ tasks
 
 Then execute subtasks by passing the parent task name as the first argument and the child task name as the second.
 
-```
+```console
 $ node make a 2
 hi from a2
 
@@ -126,7 +128,7 @@ hi from b1
 
 Command-line arguments as parsed by [minimist](http://npm.im/minimist).
 
-### `tasks.add(name, callback) : ygor`
+### `tasks.add(name, callback): tasks`
 
 - `name` `{String}` Unique task identifier.
 - `callback` `{Function(cli, tasks)}` Function to run when the task is invoked.
@@ -141,7 +143,7 @@ function foo(cli, tasks) {
 tasks.add('foo', foo);
 ```
 
-### `tasks.run(name) : Promise`
+### `tasks.run(name): Promise<>`
 
 - `name` `{String}` Unique task identifier.
 
@@ -173,13 +175,16 @@ tasks
     .add('bar', bar);
 ```
 
-
 ----
 
 © 2017 Shannon Moeller <me@shannonmoeller.com> (shannonmoeller.com)
 
 Licensed under [MIT](http://shannonmoeller.com/mit.txt)
 
+[coveralls-img]: http://img.shields.io/coveralls/shannonmoeller/ygor/master.svg?style=flat-square
+[coveralls-url]: https://coveralls.io/r/shannonmoeller/ygor
 [downloads-img]: http://img.shields.io/npm/dm/@ygor/tasks.svg?style=flat-square
 [npm-img]:       http://img.shields.io/npm/v/@ygor/tasks.svg?style=flat-square
 [npm-url]:       https://npmjs.org/package/@ygor/tasks
+[travis-img]:    http://img.shields.io/travis/shannonmoeller/ygor/master.svg?style=flat-square
+[travis-url]:    https://travis-ci.org/shannonmoeller/ygor
