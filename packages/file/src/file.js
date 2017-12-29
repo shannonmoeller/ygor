@@ -20,12 +20,14 @@ export class File {
 	 * @param {String} options.path
 	 * @param {Buffer|String} options.contents
 	 */
-	constructor({ cwd = process.cwd(), path, contents } = {}) {
+	constructor({ cwd = process.cwd(), path, contents, ...rest } = {}) {
 		this.history = [];
 
 		this.cwd = cwd;
 		this.path = path;
 		this.contents = contents;
+
+		Object.assign(this, rest);
 	}
 
 	/**

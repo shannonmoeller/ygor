@@ -14,6 +14,20 @@ $ npm install --save @ygor/file
 
 ```js
 const file = require('@ygor/file');
+
+const foo = file({ path: 'foo/bar.txt' });
+
+console.log(foo.absolute);
+// -> /home/jdoe/foo/bar.txt
+
+// Read the contents of the file at the given path.
+await foo.read();
+
+// Modify the contents in memory.
+file.contents = file.contents.toUpperCase();
+
+// Write the new contents to the file system.
+await foo.write();
 ```
 
 ## API
@@ -22,8 +36,9 @@ const file = require('@ygor/file');
 
 - `options` `{Object}`
 - `options.cwd` `{String}` - Current working directory. (default: `process.cwd()`)
-- `options.path` `{String}` - Path to file after `cwd`. (default: `undefined`)
+- `options.path` `{String}` - Path to file relative to `.cwd`. (default: `undefined`)
 - `options.contents` `{String|Buffer}` - File contents. (default: `undefined`)
+- `options.{custom}` `{any}` - Any additional properties will be copied to the returned File object.
 
 Creates a File object.
 
@@ -31,11 +46,11 @@ Creates a File object.
 
 #### `.delete(): Promise<File>`
 
-Unlinks the file on the file system. The path and contents remain in memory.
+Unlinks the file on the file system. The contents remain in memory if they were set or read.
 
 #### `.read([options]): Promise<File>`
 
-- `options` `{Object}` - Same as [`fs.readFile` options](https://nodejs.org/dist/latest-v8.x/docs/api/fs.html#fs_fs_readfile_path_options_callback) plus the following change.
+- `options` `{Object}` - Same as [`fs.readFile` options](https://nodejs.org/dist/latest-v8.x/docs/api/fs.html#fs_fs_readfile_path_options_callback) with the following change.
 - `options.encoding` `{String|null}` - File encoding defaults to `utf8`. You must specify `null` for binary files. (default: `'utf8'`)
 
 Reads the file contents from the file system into the `.contents` value.
@@ -46,26 +61,165 @@ Returns an instance of the Node.js [fs.Stats class](https://nodejs.org/dist/late
 
 #### `.write([options]): Promise<File>`
 
-- `options` `{Object}` - Same as [`fs.writeFile` options](https://nodejs.org/dist/latest-v8.x/docs/api/fs.html#fs_fs_writefile_file_data_options_callback) plus the following addition.
-- `options.cwd` `{String}` Alternate `cwd` for the write, relative to the existing `.cwd` value or an absolute path.
+- `options` `{Object}` - Same as [`fs.writeFile` options](https://nodejs.org/dist/latest-v8.x/docs/api/fs.html#fs_fs_writefile_file_data_options_callback) with the following addition.
+- `options.cwd` `{String}` Alternate base path for the write; can be relative to the existing `.cwd` or an absolute path.
 
 Writes the `.contents` value as the file contents to the file system.
 
+#### `.toJSON(): Object`
+
+Returns `.cwd`, `.path`, and `.contents` as a plain object.
+
+#### `.toString(): String`
+
+Returns a `console.log`-friendly representation of the file.
+
 ### File Properties
 
-#### `.absolute`
+#### `.contents` `{String|Buffer|undefined}`
 
-#### `.cwd`
+The contents of the file.
 
-#### `.path`
+#### `.absolute` `{String}`
 
-#### `.dirname`
+The absolute path to the file. Read only.
 
-#### `.basename`
+```js
+const foo = file({ path: 'foo/bar.txt' });
 
-#### `.stem`
+console.log(foo.absolute);
+// -> /home/jdoe/foo/bar.txt
+```
 
-#### `.extname`
+#### `.cwd` `{String}`
+
+The current working directory of the file. (default `process.cwd()`)
+
+```js
+const foo = file({ path: 'foo/bar.txt' });
+
+console.log(foo.absolute);
+// -> /home/jdoe/foo/bar.txt
+
+console.log(foo.cwd);
+// -> /home/jdoe
+
+foo.cwd = '/Users/jappleseed';
+
+console.log(foo.absolute);
+// -> /Users/jappleseed/foo/bar.txt
+```
+
+#### `.path` `{String}`
+
+The path of the file relative to `.cwd`.
+
+```js
+const foo = file({ path: 'foo/bar.txt' });
+
+console.log(foo.absolute);
+// -> /home/jdoe/foo/bar.txt
+
+console.log(foo.path);
+// -> foo/bar.txt
+
+foo.path = 'baz/qux.txt';
+
+console.log(foo.absolute);
+// -> /Users/jappleseed/baz/qux.txt
+```
+
+#### `.dirname` `{String}`
+
+The directory portion of `.path`.
+
+```js
+const foo = file({ path: 'foo/bar.txt' });
+
+console.log(foo.absolute);
+// -> /home/jdoe/foo/bar.txt
+
+console.log(foo.dirname);
+// -> foo
+
+foo.dirname = 'baz/qux';
+
+console.log(foo.absolute);
+// -> /Users/jappleseed/baz/qux/bar.txt
+```
+
+#### `.basename` `{String}`
+
+The file portion of `.path`.
+
+```js
+const foo = file({ path: 'foo/bar.txt' });
+
+console.log(foo.absolute);
+// -> /home/jdoe/foo/bar.txt
+
+console.log(foo.basename);
+// -> bar.txt
+
+foo.basename = 'qux.txt';
+
+console.log(foo.absolute);
+// -> /Users/jappleseed/foo/qux.txt
+```
+
+#### `.stem` `{String}`
+
+The file portion of `.path` without the extension.
+
+```js
+const foo = file({ path: 'foo/bar.txt' });
+
+console.log(foo.absolute);
+// -> /home/jdoe/foo/bar.txt
+
+console.log(foo.basename);
+// -> bar
+
+foo.basename = 'qux';
+
+console.log(foo.absolute);
+// -> /Users/jappleseed/foo/qux.txt
+```
+
+#### `.extname` `{String}`
+
+The file extension portion of `.path`.
+
+```js
+const foo = file({ path: 'foo/bar.txt' });
+
+console.log(foo.absolute);
+// -> /home/jdoe/foo/bar.txt
+
+console.log(foo.basename);
+// -> .txt
+
+foo.basename = '.html';
+
+console.log(foo.absolute);
+// -> /Users/jappleseed/foo/bar.html
+```
+
+#### `.history` `{Array<String>}`
+
+The history of `.path` changes. Generally best treated as read-only.
+
+```js
+const foo = file({ path: 'foo/bar.txt' });
+
+console.log(foo.history);
+// -> ['foo/bar.txt']
+
+foo.stem = 'qux';
+
+console.log(foo.history);
+// -> ['foo/bar.txt', 'foo/qux.txt']
+```
 
 ----
 
