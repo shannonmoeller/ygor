@@ -125,15 +125,14 @@ export class File {
 	/**
 	 * @method read
 	 * @param {Object} options
-	 * @param {String} options.cwd
 	 * @param {String} options.encoding
 	 * @param {String} options.flag
 	 * @return {Promise<FileFs>}
 	 */
-	read({ cwd = '', ...options } = {}) {
+	read(options = {}) {
 		assertNonEmptyString('Basename', this.basename);
 
-		const pathname = path.resolve(this.cwd, cwd, this.path);
+		const pathname = path.resolve(this.cwd, this.path);
 		const readOptions = {
 			encoding: 'utf8',
 			flag: 'r',
@@ -147,14 +146,12 @@ export class File {
 
 	/**
 	 * @method stat
-	 * @param {Object} options
-	 * @param {String} options.cwd
 	 * @return {Promise<Object>}
 	 */
-	stat({ cwd = '' } = {}) {
+	stat() {
 		assertNonEmptyString('Basename', this.basename);
 
-		const pathname = path.resolve(this.cwd, cwd, this.path);
+		const pathname = path.resolve(this.cwd, this.path);
 
 		return stat(pathname);
 	}

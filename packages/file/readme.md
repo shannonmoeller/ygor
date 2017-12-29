@@ -6,7 +6,7 @@ A no-frills file object. Built on [promises](https://developer.mozilla.org/en-US
 
 ## Install
 
-```
+```console
 $ npm install --save @ygor/file
 ```
 
@@ -25,6 +25,32 @@ const file = require('@ygor/file');
 - `options.path` `{String}` - Path to file after `cwd`. (default: `undefined`)
 - `options.contents` `{String|Buffer}` - File contents. (default: `undefined`)
 
+Creates a File object.
+
+### File Methods
+
+#### `.delete(): Promise<File>`
+
+Unlinks the file on the file system. The path and contents remain in memory.
+
+#### `.read([options]): Promise<File>`
+
+- `options` `{Object}` - Same as [`fs.readFile` options](https://nodejs.org/dist/latest-v8.x/docs/api/fs.html#fs_fs_readfile_path_options_callback) plus the following change.
+- `options.encoding` `{String|null}` - File encoding defaults to `utf8`. You must specify `null` for binary files. (default: `'utf8'`)
+
+Reads the file contents from the file system into the `.contents` value.
+
+#### `.stat(): Promise<Stats>`
+
+Returns an instance of the Node.js [fs.Stats class](https://nodejs.org/dist/latest-v8.x/docs/api/fs.html#fs_class_fs_stats).
+
+#### `.write([options]): Promise<File>`
+
+- `options` `{Object}` - Same as [`fs.writeFile` options](https://nodejs.org/dist/latest-v8.x/docs/api/fs.html#fs_fs_writefile_file_data_options_callback) plus the following addition.
+- `options.cwd` `{String}` Alternate `cwd` for the write, relative to the existing `.cwd` value or an absolute path.
+
+Writes the `.contents` value as the file contents to the file system.
+
 ### File Properties
 
 #### `.absolute`
@@ -41,15 +67,6 @@ const file = require('@ygor/file');
 
 #### `.extname`
 
-### File Methods
-
-#### `.delete()`
-
-#### `.read()`
-
-#### `.stat()`
-
-#### `.write()`
 ----
 
 © 2017 Shannon Moeller <me@shannonmoeller.com> (shannonmoeller.com)

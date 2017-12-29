@@ -6,7 +6,7 @@ An array-aware promise object. Like a regular [promise](https://developer.mozill
 
 ## Install
 
-```
+```console
 $ npm install --save @ygor/list
 ```
 
