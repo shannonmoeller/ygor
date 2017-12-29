@@ -38,7 +38,7 @@ await foo.write();
 - `options.cwd` `{String}` - Current working directory. (default: `process.cwd()`)
 - `options.path` `{String}` - Path to file relative to `.cwd`. (default: `undefined`)
 - `options.contents` `{String|Buffer}` - File contents. (default: `undefined`)
-- `options.{custom}` `{any}` - Any additional properties will be copied to the returned File object.
+- `options.[custom]` `{any}` - Any additional properties will be copied to the returned File object.
 
 Creates a File object.
 

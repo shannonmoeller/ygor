@@ -31,7 +31,9 @@ function buildJs(cli) {
   return find('src/**/*.js')
     .map(read())
     .map(file => {
-      file.contents = transform(file.contents, cli).code;
+      const { code } = await transform(file.contents, cli);
+
+      file.contents = code;
 
       return file;
     })
