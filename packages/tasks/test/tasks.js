@@ -1,4 +1,5 @@
 import suite from 'blue-tape';
+import mute from 'mute';
 import tasks, { handleError } from '../src/tasks.js';
 
 suite('@ygor/tasks/add', ({ test }) => {
@@ -98,9 +99,49 @@ suite('@ygor/tasks/add', ({ test }) => {
 });
 
 suite('@ygor/tasks/handleError', ({ test }) => {
+	let unmute;
+	let exitCode;
+
+	test('setup', async () => {
+		unmute = mute(process.stderr);
+		exitCode = process.exitCode;
+	});
+
 	test('should handle errors', async t => {
 		t.doesNotThrow(() => {
-			handleError('should log this error');
+			handleError();
+
+			t.equal(process.exitCode, 1);
+
+			process.exitCode = exitCode;
 		});
+
+		t.doesNotThrow(() => {
+			handleError('should log this error');
+
+			t.equal(process.exitCode, 1);
+
+			process.exitCode = exitCode;
+		});
+
+		t.doesNotThrow(() => {
+			handleError(new Error('should log this error'));
+
+			t.equal(process.exitCode, 1);
+
+			process.exitCode = exitCode;
+		});
+
+		t.doesNotThrow(() => {
+			handleError({ code: 123, message: 'should log this error' });
+
+			t.equal(process.exitCode, 123);
+
+			process.exitCode = exitCode;
+		});
+	});
+
+	test('teardown', async () => {
+		unmute();
 	});
 });

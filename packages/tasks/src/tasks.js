@@ -105,11 +105,10 @@ function tasks(options = cli) {
  * @method handleError
  * @param {Error} error
  */
-export function handleError(error) {
-	// istanbul ignore if
-	if (error.code !== undefined) {
-		process.exitCode = error.code;
-	}
+export function handleError(error = 'An unknown error has occurred.') {
+	const { code } = error;
+
+	process.exitCode = code === undefined ? 1 : code;
 
 	console.error(error);
 }
