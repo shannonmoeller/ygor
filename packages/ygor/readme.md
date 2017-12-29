@@ -19,7 +19,7 @@ Create a JavaScript file, write some functions, tell Ygor.
 ```js
 // make.js
 
-const { tasks, find, read, write, shell } = require('ygor');
+const { tasks, shell, find, read, write } = require('ygor');
 const { transform } = require('babel-core');
 
 function buildCss() {
@@ -58,9 +58,13 @@ $ node make js --minified
 
 ## API
 
-See [`@ygor/tasks`](http://npm.im/@ygor/tasks) for complete documentation on the task runner (`tasks`).
+See the individual packages for complete documentation:
 
-See [`@ygor/files`](http://npm.im/@ygor/files) for complete documentation on the file transformer (`find`, `read`, `write`).
+- [`@ygor/tasks`](http://npm.im/@ygor/tasks) - Task runner
+- [`@ygor/shell`](http://npm.im/@ygor/shell) - Shell template tag
+- [`@ygor/files`](http://npm.im/@ygor/files) - File transformer
+- [`@ygor/file`](http://npm.im/@ygor/file) - Virtual file object
+- [`@ygor/list`](http://npm.im/@ygor/list) - Array-aware Promise
 
 ----
 
