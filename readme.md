@@ -20,10 +20,10 @@ Node is the CLI, npm is the plugin system. Go nuts.
 
 - [`ygor`](http://npm.im/ygor) - Toolkit
 - [`@ygor/tasks`](http://npm.im/@ygor/tasks) - Task runner
+- [`@ygor/shell`](http://npm.im/@ygor/shell) - Shell template tag
 - [`@ygor/files`](http://npm.im/@ygor/files) - File transformer
 - [`@ygor/file`](http://npm.im/@ygor/file) - Virtual file object
 - [`@ygor/list`](http://npm.im/@ygor/list) - Array-aware Promise
-- [`@ygor/shell`](http://npm.im/@ygor/shell) - Shell template tag
 
 ----
 

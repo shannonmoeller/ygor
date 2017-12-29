@@ -27,9 +27,45 @@ const result = await shell({ stdio: 'pipe' })`
     echo ${foo}
     >&2 echo ${bar}
 `;
+
+console.log(result.stdout, result.stderr);
 ```
 
 ## API
+
+### shell`` `cmd` ``: Promise
+
+- `cmd` `{String}`
+
+Interpolates a string, escapes values to make them safe to run in the shell, then executes the command. Supports multi-line commands. Directs `stdout` and `stderr` to the parent process.
+
+```js
+await shell`
+    echo ${foo}
+    >&2 echo ${bar}
+`;
+
+try {
+  await shell`exit 123`;
+} catch (e) {
+  console.error(`Exited with code: ${e.code}`);
+}
+```
+
+### shell([options]): Function(strings, ...values): Promise
+
+- `options` `{Object}` - See [`execa` options](https://github.com/sindresorhus/execa#options).
+
+Creates a template-tag function with the given options. Useful for overriding things like the current working directory or how `stdio` is handled.
+
+```js
+const shellPipe = shell({ stdio: 'pipe' });
+const process = shellPipe`echo hello world`;
+
+process.stdout.pipe(process.stdout);
+
+console.log(await process);
+```
 
 ----
 
