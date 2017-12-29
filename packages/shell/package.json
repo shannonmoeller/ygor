@@ -1,0 +1,30 @@
+{
+  "name": "@ygor/shell",
+  "version": "5.0.0",
+  "description": "A transformable shell object.",
+  "keywords": [
+    "ygor",
+    "shell",
+    "exec",
+    "spawn",
+    "io"
+  ],
+  "author": "Shannon Moeller <me@shannonmoeller> (http://shannonmoeller.com)",
+  "homepage": "https://github.com/shannonmoeller/ygor/tree/master/packages/shell#readme",
+  "repository": "shannonmoeller/ygor",
+  "license": "MIT",
+  "main": "dist/shell.js",
+  "shells": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=6"
+  },
+  "dependencies": {
+    "any-shell-escape": "^0.1.1",
+    "execa": "^0.8.0"
+  }
+}

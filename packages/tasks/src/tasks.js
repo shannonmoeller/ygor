@@ -99,4 +99,23 @@ function tasks(options = cli) {
 	});
 }
 
+/**
+ * Error handler.
+ *
+ * @method handleError
+ * @param {Error} error
+ */
+export function handleError(error) {
+	// istanbul ignore if
+	if (error.code !== undefined) {
+		process.exitCode = error.code;
+	}
+
+	console.error(error);
+}
+
+// Register error handlers
+process.on('uncaughtException', handleError);
+process.on('unhandledRejection', handleError);
+
 export default tasks();

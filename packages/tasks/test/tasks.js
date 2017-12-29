@@ -1,7 +1,7 @@
 import suite from 'blue-tape';
-import tasks from '../src/tasks.js';
+import tasks, { handleError } from '../src/tasks.js';
 
-suite('@ygor/tasks', ({ test }) => {
+suite('@ygor/tasks/add', ({ test }) => {
 	test('should register tasks', async t => {
 		t.throws(() => tasks.add());
 		t.throws(() => tasks.add('foo'));
@@ -94,5 +94,13 @@ suite('@ygor/tasks', ({ test }) => {
 			);
 
 		t.equal(actual, 'hello world');
+	});
+});
+
+suite('@ygor/tasks/handleError', ({ test }) => {
+	test('should handle errors', async t => {
+		t.doesNotThrow(() => {
+			handleError('should log this error');
+		});
 	});
 });

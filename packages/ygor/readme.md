@@ -19,12 +19,11 @@ Create a JavaScript file, write some functions, tell Ygor.
 ```js
 // make.js
 
-const { tasks, find, read, write } = require('ygor');
-const { shell } = require('execa');
+const { tasks, find, read, write, shell } = require('ygor');
 const { transform } = require('babel-core');
 
 function buildCss() {
-  return shell('postcss --use autoprefixer --dir dest src/**/*.css');
+  return shell`postcss --use autoprefixer --dir dest src/**/*.css`;
 }
 
 function buildJs(cli) {

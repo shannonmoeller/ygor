@@ -31,6 +31,7 @@
     "@ygor/file": "^5.0.0",
     "@ygor/files": "^5.0.0",
     "@ygor/list": "^5.0.0",
+    "@ygor/shell": "^5.0.0",
     "@ygor/tasks": "^5.0.0"
   },
   "engines": {
