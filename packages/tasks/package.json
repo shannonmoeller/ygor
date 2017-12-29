@@ -1,6 +1,6 @@
 {
   "name": "@ygor/tasks",
-  "version": "5.0.0-9",
+  "version": "5.0.0",
   "description": "A promising task runner.",
   "keywords": [
     "ygor",
