@@ -16,10 +16,11 @@
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": ">= 6",
+    "npm": ">= 3"
+  },
   "publishConfig": {
     "access": "public"
-  },
-  "engines": {
-    "node": ">=6"
   }
 }

@@ -23,12 +23,6 @@
   "files": [
     "dist"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
-  "engines": {
-    "node": ">= 4"
-  },
   "dependencies": {
     "p-any": "^1.1.0",
     "p-filter": "^1.0.0",
@@ -36,5 +30,12 @@
     "p-map": "^1.2.0",
     "p-reduce": "^1.0.0",
     "p-some": "^2.0.0"
+  },
+  "engines": {
+    "node": ">= 6",
+    "npm": ">= 3"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

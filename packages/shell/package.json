@@ -14,17 +14,18 @@
   "repository": "shannonmoeller/ygor",
   "license": "MIT",
   "main": "dist/shell.js",
-  "shells": [
+  "files": [
     "dist"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
-  "engines": {
-    "node": ">=6"
-  },
   "dependencies": {
     "any-shell-escape": "^0.1.1",
     "execa": "^0.8.0"
+  },
+  "engines": {
+    "node": ">= 6",
+    "npm": ">= 3"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

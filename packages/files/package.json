@@ -16,9 +16,6 @@
   "files": [
     "dist"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
   "dependencies": {
     "@ygor/file": "^5.1.0",
     "@ygor/list": "^5.1.0",
@@ -26,6 +23,10 @@
     "globby": "^7.1.1"
   },
   "engines": {
-    "node": ">=6"
+    "node": ">= 6",
+    "npm": ">= 3"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
