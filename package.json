@@ -12,8 +12,8 @@
     "test": "nyc run-s test-*",
     "test-node": "cross-env NODE_ENV=test blue-tape -r babel-register \"packages/*/test/*.js\" | tap-diff",
     "report": "nyc report -r text-lcov | coveralls",
-    "precommit": "run-s test build && git add .",
-    "pretest": "run-s lint",
+    "precommit": "run-s test && git add .",
+    "pretest": "run-s lint build",
     "publish": "run-s precommit && lerna publish",
     "publish-beta": "run-s precommit && lerna publish --preid=beta --npm-tag=beta",
     "postinstall": "lerna bootstrap"

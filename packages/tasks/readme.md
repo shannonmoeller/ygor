@@ -122,6 +122,24 @@ $ node make b 1
 hi from b1
 ```
 
+### Bring Your Own Arguments
+
+You can override the default cli parsing by providing your own arguments object.
+
+```js
+function logCli(cli) {
+    console.log(cli);
+}
+
+tasks({ foo: 'bar' })
+    .add('log', logCli);
+```
+
+```console
+$ node make log
+{ foo: 'bar' }
+```
+
 ## API
 
 ### `tasks.cli`
@@ -174,6 +192,12 @@ tasks
     .add('foo', foo)
     .add('bar', bar);
 ```
+
+### `tasks([cli]): tasks`
+
+- `options` `{Object}` - The `cli` arguments. (default: `minimist(process.argv.slice(2))`)
+
+Creates a subset of tasks, useful for providing your own cli arguments, [lazy task definition](#deferred-tasks), and [creating subtasks](#subtasks).
 
 ----
 

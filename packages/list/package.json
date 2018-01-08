@@ -24,7 +24,6 @@
     "dist"
   ],
   "dependencies": {
-    "p-any": "^1.1.0",
     "p-filter": "^1.0.0",
     "p-locate": "^2.0.0",
     "p-map": "^1.2.0",
