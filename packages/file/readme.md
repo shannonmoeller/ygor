@@ -126,7 +126,7 @@ console.log(foo.path);
 foo.path = 'baz/qux.txt';
 
 console.log(foo.absolute);
-// -> /Users/jappleseed/baz/qux.txt
+// -> /home/jdoe/baz/qux.txt
 ```
 
 #### `.dirname` `{String}`
@@ -145,7 +145,7 @@ console.log(foo.dirname);
 foo.dirname = 'baz/qux';
 
 console.log(foo.absolute);
-// -> /Users/jappleseed/baz/qux/bar.txt
+// -> /home/jdoe/baz/qux/bar.txt
 ```
 
 #### `.basename` `{String}`
@@ -164,7 +164,7 @@ console.log(foo.basename);
 foo.basename = 'qux.txt';
 
 console.log(foo.absolute);
-// -> /Users/jappleseed/foo/qux.txt
+// -> /home/jdoe/foo/qux.txt
 ```
 
 #### `.stem` `{String}`
@@ -183,7 +183,7 @@ console.log(foo.basename);
 foo.basename = 'qux';
 
 console.log(foo.absolute);
-// -> /Users/jappleseed/foo/qux.txt
+// -> /home/jdoe/foo/qux.txt
 ```
 
 #### `.extname` `{String}`
@@ -202,7 +202,7 @@ console.log(foo.basename);
 foo.basename = '.html';
 
 console.log(foo.absolute);
-// -> /Users/jappleseed/foo/bar.html
+// -> /home/jdoe/foo/bar.html
 ```
 
 #### `.history` `{Array<String>}`
