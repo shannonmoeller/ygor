@@ -1,6 +1,6 @@
 {
   "name": "@ygor/file",
-  "version": "5.1.4",
+  "version": "5.1.6",
   "description": "A transformable file object.",
   "keywords": [
     "ygor",
