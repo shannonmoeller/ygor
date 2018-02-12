@@ -1,6 +1,6 @@
 {
   "name": "ygor",
-  "version": "5.2.1",
+  "version": "5.2.2",
   "description": "For when 'npm run' isn't enough and everything else is too much.",
   "keywords": [
     "broccoli",
