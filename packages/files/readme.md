@@ -114,9 +114,7 @@ const files = await find('**/*.js')
 
 ----
 
-© 2017 Shannon Moeller <me@shannonmoeller.com> (shannonmoeller.com)
-
-Licensed under [MIT](http://shannonmoeller.com/mit.txt)
+MIT © [Shannon Moeller](http://shannonmoeller.com)
 
 [coveralls-img]: http://img.shields.io/coveralls/shannonmoeller/ygor/master.svg?style=flat-square
 [coveralls-url]: https://coveralls.io/r/shannonmoeller/ygor
