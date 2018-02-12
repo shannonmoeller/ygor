@@ -29,9 +29,11 @@
     "dist"
   ],
   "dependencies": {
+    "ansi-gray": "^0.1.1",
+    "ansi-magenta": "^0.1.1",
     "cli-columns": "^3.1.2",
     "minimist": "^1.2.0",
-    "time-diff": "^0.3.1"
+    "ms": "^2.1.1"
   },
   "engines": {
     "node": ">= 6",

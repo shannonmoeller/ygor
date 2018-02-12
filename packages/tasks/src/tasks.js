@@ -5,14 +5,25 @@
  */
 
 import columns from 'cli-columns';
+import gray from 'ansi-gray';
+import magenta from 'ansi-magenta';
 import minimist from 'minimist';
-import Time from 'time-diff';
+import ms from 'ms';
 
 const cli = minimist(process.argv.slice(2), {
 	alias: { quiet: 'q' },
 	boolean: ['quiet', 'run'],
 	default: { quiet: false, run: true }
 });
+
+function logTime(name, startTime, endTime) {
+	const now = endTime ? endTime : startTime;
+	const nowStamp = now.toTimeString().slice(0, 8);
+	const message = endTime ? ms(endTime - startTime) : 'started';
+
+	// Use stderr to keep stdout useful
+	console.error(`[${gray(nowStamp)}] ${name}: ${magenta(message)}`);
+}
 
 /**
  * Tasks factory.
@@ -47,12 +58,14 @@ function tasks(options = cli) {
 			return val => val;
 		}
 
-		const diff = new Time().diff(`${name}:`);
+		const startTime = new Date();
 
-		diff('started');
+		logTime(name, startTime);
 
 		return val => {
-			diff('finished');
+			const endTime = new Date();
+
+			logTime(name, startTime, endTime);
 
 			return val;
 		};
