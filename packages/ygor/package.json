@@ -20,12 +20,13 @@
     "task"
   ],
   "author": "Shannon Moeller <me@shannonmoeller.com> (http://shannonmoeller.com)",
-  "homepage": "https://github.com/shannonmoeller/ygor#readme",
+  "homepage": "https://github.com/shannonmoeller/ygor/tree/master/packages/ygor#readme",
   "repository": "shannonmoeller/ygor",
   "license": "MIT",
   "main": "dist/ygor.js",
   "files": [
-    "dist"
+    "dist",
+    "*.md"
   ],
   "dependencies": {
     "@ygor/file": "^5.1.6",

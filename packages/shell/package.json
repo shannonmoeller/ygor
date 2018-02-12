@@ -15,7 +15,8 @@
   "license": "MIT",
   "main": "dist/shell.js",
   "files": [
-    "dist"
+    "dist",
+    "*.md"
   ],
   "dependencies": {
     "any-shell-escape": "^0.1.1",

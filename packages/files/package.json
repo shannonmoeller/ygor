@@ -14,7 +14,8 @@
   "license": "MIT",
   "main": "dist/files.js",
   "files": [
-    "dist"
+    "dist",
+    "*.md"
   ],
   "dependencies": {
     "@ygor/file": "^5.1.6",

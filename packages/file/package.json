@@ -14,7 +14,8 @@
   "license": "MIT",
   "main": "dist/file.js",
   "files": [
-    "dist"
+    "dist",
+    "*.md"
   ],
   "engines": {
     "node": ">= 6",

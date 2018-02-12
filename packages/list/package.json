@@ -21,7 +21,8 @@
   "license": "MIT",
   "main": "dist/list.js",
   "files": [
-    "dist"
+    "dist",
+    "*.md"
   ],
   "dependencies": {
     "p-filter": "^1.0.0",

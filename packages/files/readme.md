@@ -108,6 +108,12 @@ const files = await find('**/*.js')
 
 ----
 
+<p align="center">
+  <a href="https://github.com/shannonmoeller/ygor#readme"><img src="https://cdn.rawgit.com/shannonmoeller/ygor/4de4a22/media/logo.svg" alt="ygor" width="480" /></a>
+</p>
+
+----
+
 © 2017 Shannon Moeller <me@shannonmoeller.com> (shannonmoeller.com)
 
 Licensed under [MIT](http://shannonmoeller.com/mit.txt)
