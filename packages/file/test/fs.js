@@ -9,7 +9,7 @@ suite('@ygor/file/fs', ({ test }) => {
 		});
 	});
 
-	test('should recursively create directories', async t => {
+	test('should recursively create directories', async (t) => {
 		await mkdirp('foo/bar/baz'.split('/'));
 		await mkdirp('/foo/bar/baz'.split('/'));
 

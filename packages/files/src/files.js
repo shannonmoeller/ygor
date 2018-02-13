@@ -31,7 +31,7 @@ export function find(pattern, options = {}) {
 		cwd
 	};
 
-	return list(globby(patterns, globOptions)).map(x =>
+	return list(globby(patterns, globOptions)).map((x) =>
 		file({
 			cwd: workdir,
 			path: x.replace(workdir, '')
@@ -49,7 +49,7 @@ export function read(options) {
 		options = { encoding: options };
 	}
 
-	return x => x.read(options);
+	return (x) => x.read(options);
 }
 
 /**
@@ -62,7 +62,7 @@ export function write(options) {
 		options = { cwd: options };
 	}
 
-	return x => x.write(options);
+	return (x) => x.write(options);
 }
 
 export { file, list };

@@ -14,7 +14,7 @@ suite('@ygor/file', ({ test }) => {
 		});
 	});
 
-	test('should represent an empty file', async t => {
+	test('should represent an empty file', async (t) => {
 		const foo = file();
 
 		t.equal(foo.cwd, process.cwd());
@@ -37,7 +37,7 @@ suite('@ygor/file', ({ test }) => {
 		t.deepEqual(foo.toString(), '<File "undefined" "undefined">');
 	});
 
-	test('should represent a full file', async t => {
+	test('should represent a full file', async (t) => {
 		const foo = file({
 			cwd: '/a',
 			path: 'b/c/file.ext',
@@ -70,7 +70,7 @@ suite('@ygor/file', ({ test }) => {
 		);
 	});
 
-	test('should manage dirnames', async t => {
+	test('should manage dirnames', async (t) => {
 		const foo = file({ path: '/a/b/file.ext' });
 
 		t.equal(foo.dirname, '/a/b');
@@ -88,7 +88,7 @@ suite('@ygor/file', ({ test }) => {
 		t.deepEqual(foo.history, ['/a/b/file.ext', '/c/d/file.ext']);
 	});
 
-	test('should manage basenames', async t => {
+	test('should manage basenames', async (t) => {
 		const foo = file({ path: '/a/b/file.ext' });
 
 		t.equal(foo.basename, 'file.ext');
@@ -106,7 +106,7 @@ suite('@ygor/file', ({ test }) => {
 		t.deepEqual(foo.history, ['/a/b/file.ext', '/a/b/foo.bar']);
 	});
 
-	test('should manage stems', async t => {
+	test('should manage stems', async (t) => {
 		const foo = file({ path: '/a/b/file.ext' });
 
 		t.equal(foo.stem, 'file');
@@ -124,7 +124,7 @@ suite('@ygor/file', ({ test }) => {
 		t.deepEqual(foo.history, ['/a/b/file.ext', '/a/b/foo.ext']);
 	});
 
-	test('should manage extnames', async t => {
+	test('should manage extnames', async (t) => {
 		const foo = file({ path: '/a/b/file.ext' });
 
 		t.equal(foo.extname, '.ext');
@@ -142,7 +142,7 @@ suite('@ygor/file', ({ test }) => {
 		t.deepEqual(foo.history, ['/a/b/file.ext', '/a/b/file.bar']);
 	});
 
-	test('should delete', async t => {
+	test('should delete', async (t) => {
 		const foo = file({ path: 'foo/delete.me' });
 		const bar = await foo.delete();
 
@@ -156,7 +156,7 @@ suite('@ygor/file', ({ test }) => {
 		}
 	});
 
-	test('should read', async t => {
+	test('should read', async (t) => {
 		const foo = file({ path: 'foo/read.me' });
 
 		t.equal(foo.contents, undefined);
@@ -174,7 +174,7 @@ suite('@ygor/file', ({ test }) => {
 		}
 	});
 
-	test('should stat', async t => {
+	test('should stat', async (t) => {
 		const foo = file({ path: 'foo/stat.me' });
 		const stat = await foo.stat();
 
@@ -190,7 +190,7 @@ suite('@ygor/file', ({ test }) => {
 		}
 	});
 
-	test('should write', async t => {
+	test('should write', async (t) => {
 		const foo = file({
 			cwd: 'foo/bar',
 			path: 'baz/write.me',

@@ -2,7 +2,7 @@ import suite from 'blue-tape';
 import shell from '../src/shell.js';
 
 suite('@ygor/shell', ({ test }) => {
-	test('should execute a command', async t => {
+	test('should execute a command', async (t) => {
 		const hello = 'hello world';
 		const foo = 'foo bar';
 

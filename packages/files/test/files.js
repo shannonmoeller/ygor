@@ -26,7 +26,7 @@ suite('@ygor/files', ({ test }) => {
 		});
 	});
 
-	test('should not find files', async t => {
+	test('should not find files', async (t) => {
 		const a = await find();
 		const b = await find('src/**/*.ext');
 		const c = await find('foo/**/*.js');
@@ -36,7 +36,7 @@ suite('@ygor/files', ({ test }) => {
 		t.deepEqual(c, []);
 	});
 
-	test('should find files', async t => {
+	test('should find files', async (t) => {
 		const a = await find('src/**/*.js').map(toJSON);
 		const b = await find('./src/**/*.js').map(toJSON);
 		const c = await find('**/*.js', { cwd: 'src' }).map(toJSON);
@@ -80,7 +80,7 @@ suite('@ygor/files', ({ test }) => {
 		]);
 	});
 
-	test('should read files', async t => {
+	test('should read files', async (t) => {
 		const a = await find('src/**/*.js')
 			.map(read())
 			.map(toJSON);
@@ -155,10 +155,10 @@ suite('@ygor/files', ({ test }) => {
 		t.equal(String(d[1].contents), 'dolor sit');
 	});
 
-	test('should write files', async t => {
+	test('should write files', async (t) => {
 		await find('src/**/*.js')
 			.map(read())
-			.map(x => {
+			.map((x) => {
 				x.contents = x.contents.toUpperCase();
 
 				return x;

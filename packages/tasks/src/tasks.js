@@ -55,14 +55,14 @@ function tasks(options = cli) {
 
 	function time(name) {
 		if (options.quiet) {
-			return val => val;
+			return (val) => val;
 		}
 
 		const startTime = new Date();
 
 		logTime(name, startTime);
 
-		return val => {
+		return (val) => {
 			const endTime = new Date();
 
 			logTime(name, startTime, endTime);
@@ -94,7 +94,7 @@ function tasks(options = cli) {
 		return promise.then(() => task(options, subtasks)).then(done);
 	}
 
-	const promise = new Promise(resolve => {
+	const promise = new Promise((resolve) => {
 		if (options.run === false) {
 			return resolve();
 		}

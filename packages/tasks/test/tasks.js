@@ -3,7 +3,7 @@ import mute from 'mute';
 import tasks, { handleError } from '../src/tasks.js';
 
 suite('@ygor/tasks/add', ({ test }) => {
-	test('should register tasks', async t => {
+	test('should register tasks', async (t) => {
 		t.throws(() => tasks.add());
 		t.throws(() => tasks.add('foo'));
 
@@ -20,7 +20,7 @@ suite('@ygor/tasks/add', ({ test }) => {
 		);
 	});
 
-	test('should run default task', async t => {
+	test('should run default task', async (t) => {
 		const cli = { _: [], quiet: true };
 
 		await tasks(cli)
@@ -29,7 +29,7 @@ suite('@ygor/tasks/add', ({ test }) => {
 			.add('default', () => t.pass('should run default'));
 	});
 
-	test('should run specific task', async t => {
+	test('should run specific task', async (t) => {
 		const cli = { _: ['foo'], quiet: true };
 
 		await tasks(cli)
@@ -38,7 +38,7 @@ suite('@ygor/tasks/add', ({ test }) => {
 			.add('default', () => t.fail('should not run default'));
 	});
 
-	test('should run deep tasks', async t => {
+	test('should run deep tasks', async (t) => {
 		const cli = { _: ['bar', 'foo'], quiet: true };
 
 		await tasks(cli)
@@ -52,7 +52,7 @@ suite('@ygor/tasks/add', ({ test }) => {
 			});
 	});
 
-	test('should print task names', async t => {
+	test('should print task names', async (t) => {
 		const cli = { _: ['derp'] };
 
 		await tasks(cli)
@@ -61,7 +61,7 @@ suite('@ygor/tasks/add', ({ test }) => {
 			.add('default', () => t.fail('should not run default'));
 	});
 
-	test('should not run', async t => {
+	test('should not run', async (t) => {
 		const cli = { _: [], run: false };
 
 		await tasks(cli)
@@ -70,7 +70,7 @@ suite('@ygor/tasks/add', ({ test }) => {
 			.add('default', () => t.fail('should not run default'));
 	});
 
-	test('should run later', async t => {
+	test('should run later', async (t) => {
 		const cli = { _: ['bar'], quiet: true, run: false };
 
 		const runner = tasks(cli)
@@ -83,7 +83,7 @@ suite('@ygor/tasks/add', ({ test }) => {
 		await runner.add('bar', () => t.pass('should run bar')).run();
 	});
 
-	test('should return task value', async t => {
+	test('should return task value', async (t) => {
 		const cli = { _: ['bar', 'foo'] };
 
 		const actual = await tasks(cli)
@@ -107,7 +107,7 @@ suite('@ygor/tasks/handleError', ({ test }) => {
 		exitCode = process.exitCode;
 	});
 
-	test('should handle errors', async t => {
+	test('should handle errors', async (t) => {
 		t.doesNotThrow(() => {
 			handleError();
 

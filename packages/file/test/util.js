@@ -2,7 +2,7 @@ import suite from 'blue-tape';
 import { assertString, assertNonEmptyString, promisify } from '../src/util.js';
 
 suite('@ygor/file/util', ({ test }) => {
-	test('should require a string', async t => {
+	test('should require a string', async (t) => {
 		t.throws(() => assertString('foo'), /foo must/);
 		t.throws(() => assertString('bar', null), /bar must/);
 		t.throws(() => assertString('baz', 1), /baz must/);
@@ -13,12 +13,12 @@ suite('@ygor/file/util', ({ test }) => {
 		t.doesNotThrow(() => assertString('bar', 'lorem ipsum'));
 	});
 
-	test('should require a non-empty string', async t => {
+	test('should require a non-empty string', async (t) => {
 		t.throws(() => assertNonEmptyString('foo', ''), /foo must/);
 		t.doesNotThrow(() => assertNonEmptyString('bar', 'lorem ipsum'));
 	});
 
-	test('should convert a callback interface to a promise interface', async t => {
+	test('should convert a callback interface to a promise interface', async (t) => {
 		function pass(a, b, cb) {
 			cb(null, a + b);
 		}

@@ -37,16 +37,16 @@ export default function list(arr) {
 	const promise = Promise.resolve(arr);
 	const listPromise = { ...promise };
 
-	methodNames.forEach(methodName => {
+	methodNames.forEach((methodName) => {
 		const method = methods[methodName];
 
 		listPromise[methodName] = (...args) =>
-			list(promise.then(x => method(x, ...args)));
+			list(promise.then((x) => method(x, ...args)));
 	});
 
 	listPromise.then = (...args) =>
 		promise
-			.then(x => (Array.isArray(x) ? Promise.all(x) : [x]))
+			.then((x) => (Array.isArray(x) ? Promise.all(x) : [x]))
 			.then(...args);
 
 	return listPromise;

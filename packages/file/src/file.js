@@ -142,7 +142,7 @@ export class File {
 		};
 
 		return readFile(pathname, readOptions)
-			.then(x => (this.contents = x))
+			.then((x) => (this.contents = x))
 			.then(() => this);
 	}
 

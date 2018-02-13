@@ -4,7 +4,8 @@ dist/
 examples/*/
 node_modules/
 
+*.log
+.*.swp
 .DS_Store
 .Trash*
-*.log
-*.swp
+.npmignore

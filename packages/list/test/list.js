@@ -2,13 +2,13 @@ import suite from 'blue-tape';
 import list from '../src/list.js';
 
 function delay(value, ms = Math.random() * 100) {
-	return new Promise(resolve => {
+	return new Promise((resolve) => {
 		setTimeout(() => resolve(value), ms);
 	});
 }
 
 suite('@ygor/list', ({ test }) => {
-	test('should resolve lists', async t => {
+	test('should resolve lists', async (t) => {
 		const a = await list(['alpha', 'beta']);
 		const b = await list(delay(['gamma', 'delta']));
 		const c = await list([delay('epsilon'), 'zeta']);
@@ -20,7 +20,7 @@ suite('@ygor/list', ({ test }) => {
 		t.deepEqual(d, ['eta', 'theta']);
 	});
 
-	test('should throw', async t => {
+	test('should throw', async (t) => {
 		try {
 			await list([Promise.reject('alpha'), 'beta']);
 			t.fail('should throw');
@@ -31,33 +31,33 @@ suite('@ygor/list', ({ test }) => {
 });
 
 suite('@ygor/list/filter', ({ test }) => {
-	test('should filter items', async t => {
+	test('should filter items', async (t) => {
 		const a = await list([
 			delay('alpha', 10),
 			'beta',
 			'alfonzo',
 			delay('bart')
-		]).filter(x => x.startsWith('a'));
+		]).filter((x) => x.startsWith('a'));
 
 		t.deepEqual(a, ['alpha', 'alfonzo']);
 	});
 });
 
 suite('@ygor/list/find', ({ test }) => {
-	test('should', async t => {
+	test('should', async (t) => {
 		const a = await list([
 			delay('alpha', 10),
 			'beta',
 			'alfonzo',
 			delay('bart')
-		]).find(x => x.startsWith('a'));
+		]).find((x) => x.startsWith('a'));
 
 		t.deepEqual(a, ['alpha']);
 	});
 });
 
 suite('@ygor/list/first', ({ test }) => {
-	test('should return fastest resolved item', async t => {
+	test('should return fastest resolved item', async (t) => {
 		const a = await list([
 			delay('alpha', 10),
 			delay('beta', 5),
@@ -67,7 +67,7 @@ suite('@ygor/list/first', ({ test }) => {
 		t.deepEqual(a, ['beta']);
 	});
 
-	test('should return fastest resolved items', async t => {
+	test('should return fastest resolved items', async (t) => {
 		const a = await list([
 			delay('alpha', 10),
 			'beta',
@@ -79,8 +79,8 @@ suite('@ygor/list/first', ({ test }) => {
 });
 
 suite('@ygor/list/flatMap', ({ test }) => {
-	test('should flatten mapped items', async t => {
-		const a = await list([delay('alpha', 10), 'beta']).flatMap(x => [
+	test('should flatten mapped items', async (t) => {
+		const a = await list([delay('alpha', 10), 'beta']).flatMap((x) => [
 			x,
 			x.toUpperCase()
 		]);
@@ -90,7 +90,7 @@ suite('@ygor/list/flatMap', ({ test }) => {
 });
 
 suite('@ygor/list/flatten', ({ test }) => {
-	test('should flatten lists of lists', async t => {
+	test('should flatten lists of lists', async (t) => {
 		const a = await list([
 			[delay('alpha', 10), 'beta'],
 			{ 0: 'gamma', length: 1 },
@@ -122,7 +122,7 @@ suite('@ygor/list/map', ({ test }) => {
 		return item + i;
 	}
 
-	test('should map items to new items', async t => {
+	test('should map items to new items', async (t) => {
 		const a = await list(['alpha', 'beta'])
 			.map(mapSync)
 			.map(mapAsync);
@@ -147,7 +147,7 @@ suite('@ygor/list/map', ({ test }) => {
 });
 
 suite('@ygor/list/reduce', ({ test }) => {
-	test('should reduce items to item', async t => {
+	test('should reduce items to item', async (t) => {
 		const a = await list(['a', delay('b'), 'c']).reduce(
 			(a, b) => a + b,
 			''

@@ -69,6 +69,6 @@ export function mkdirp(dirNames, i = 1) {
 	const dir = dirNames.slice(0, i).join(path.sep);
 
 	return mkdir(dir)
-		.catch(e => e) // ignore errors
+		.catch((e) => e) // ignore errors
 		.then(() => mkdirp(dirNames, i + 1));
 }
