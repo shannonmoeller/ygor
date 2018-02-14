@@ -1,5 +1,5 @@
 {
-  "name": "@ygor/monorepo",
+  "name": "ygor-monorepo",
   "private": true,
   "scripts": {
     "build": "run-s build-*",
@@ -11,10 +11,9 @@
     "test": "nyc run-s test-*",
     "test-node": "cross-env NODE_ENV=test blue-tape -r babel-register \"packages/*/test/*.js\" | tap-diff",
     "report": "nyc report -r text-lcov | coveralls",
-    "precommit": "run-s test && git add .",
-    "pretest": "run-s lint build",
     "publish": "run-s precommit && lerna publish",
-    "publish-beta": "run-s precommit && lerna publish --preid=beta --npm-tag=beta",
+    "pretest": "run-s lint",
+    "precommit": "run-s test build && git add .",
     "postinstall": "lerna bootstrap"
   },
   "author": "Shannon Moeller <me@shannonmoeller.com> (http://shannonmoeller.com)",
@@ -50,7 +49,7 @@
   "prettier": {
     "arrowParens": "always",
     "singleQuote": true,
-    "useTabs": true
+    "trailingComma": "es5"
   },
   "eslintConfig": {
     "parser": "babel-eslint",

@@ -14,15 +14,15 @@ suite('@ygor/files', ({ test }) => {
 			src: {
 				alpha: {
 					'beta.js': 'lorem ipsum',
-					'gamma.js': 'dolor sit'
+					'gamma.js': 'dolor sit',
 				},
 				delta: {
 					'epsilon.js': 'lorem ipsum',
-					'zeta.css': 'dolor sit'
+					'zeta.css': 'dolor sit',
 				},
 				'eta.js': 'lorem ipsum',
-				'theta.css': 'dolor sit'
-			}
+				'theta.css': 'dolor sit',
+			},
 		});
 	});
 
@@ -46,7 +46,7 @@ suite('@ygor/files', ({ test }) => {
 			toJSON
 		);
 		const g = await find('**/*.js', {
-			cwd: `${__dirname}/../../../src`
+			cwd: `${__dirname}/../../../src`,
 		}).map(toJSON);
 
 		t.deepEqual(a, b);
@@ -60,23 +60,23 @@ suite('@ygor/files', ({ test }) => {
 			{
 				cwd: `${cwd}/src`,
 				path: 'alpha/beta.js',
-				contents: undefined
+				contents: undefined,
 			},
 			{
 				cwd: `${cwd}/src`,
 				path: 'alpha/gamma.js',
-				contents: undefined
+				contents: undefined,
 			},
 			{
 				cwd: `${cwd}/src`,
 				path: 'delta/epsilon.js',
-				contents: undefined
+				contents: undefined,
 			},
 			{
 				cwd: `${cwd}/src`,
 				path: 'eta.js',
-				contents: undefined
-			}
+				contents: undefined,
+			},
 		]);
 	});
 
@@ -89,23 +89,23 @@ suite('@ygor/files', ({ test }) => {
 			{
 				cwd: `${cwd}/src`,
 				path: 'alpha/beta.js',
-				contents: 'lorem ipsum'
+				contents: 'lorem ipsum',
 			},
 			{
 				cwd: `${cwd}/src`,
 				path: 'alpha/gamma.js',
-				contents: 'dolor sit'
+				contents: 'dolor sit',
 			},
 			{
 				cwd: `${cwd}/src`,
 				path: 'delta/epsilon.js',
-				contents: 'lorem ipsum'
+				contents: 'lorem ipsum',
 			},
 			{
 				cwd: `${cwd}/src`,
 				path: 'eta.js',
-				contents: 'lorem ipsum'
-			}
+				contents: 'lorem ipsum',
+			},
 		]);
 
 		const b = await find('src/**/*.js')
@@ -121,23 +121,23 @@ suite('@ygor/files', ({ test }) => {
 			{
 				cwd: `${cwd}/src`,
 				path: 'alpha/beta.js',
-				contents: 'bG9yZW0gaXBzdW0='
+				contents: 'bG9yZW0gaXBzdW0=',
 			},
 			{
 				cwd: `${cwd}/src`,
 				path: 'alpha/gamma.js',
-				contents: 'ZG9sb3Igc2l0'
+				contents: 'ZG9sb3Igc2l0',
 			},
 			{
 				cwd: `${cwd}/src`,
 				path: 'delta/epsilon.js',
-				contents: 'bG9yZW0gaXBzdW0='
+				contents: 'bG9yZW0gaXBzdW0=',
 			},
 			{
 				cwd: `${cwd}/src`,
 				path: 'eta.js',
-				contents: 'bG9yZW0gaXBzdW0='
-			}
+				contents: 'bG9yZW0gaXBzdW0=',
+			},
 		]);
 
 		const d = await find('src/**/*.js')
@@ -175,23 +175,23 @@ suite('@ygor/files', ({ test }) => {
 			{
 				cwd: `${cwd}/src`,
 				path: 'alpha/beta.js',
-				contents: 'LOREM IPSUM'
+				contents: 'LOREM IPSUM',
 			},
 			{
 				cwd: `${cwd}/src`,
 				path: 'alpha/gamma.js',
-				contents: 'DOLOR SIT'
+				contents: 'DOLOR SIT',
 			},
 			{
 				cwd: `${cwd}/src`,
 				path: 'delta/epsilon.js',
-				contents: 'LOREM IPSUM'
+				contents: 'LOREM IPSUM',
 			},
 			{
 				cwd: `${cwd}/src`,
 				path: 'eta.js',
-				contents: 'LOREM IPSUM'
-			}
+				contents: 'LOREM IPSUM',
+			},
 		]);
 
 		const a = await find('dest-a/**/*.js')
@@ -202,23 +202,23 @@ suite('@ygor/files', ({ test }) => {
 			{
 				cwd: `${cwd}/dest-a`,
 				path: 'alpha/beta.js',
-				contents: 'LOREM IPSUM'
+				contents: 'LOREM IPSUM',
 			},
 			{
 				cwd: `${cwd}/dest-a`,
 				path: 'alpha/gamma.js',
-				contents: 'DOLOR SIT'
+				contents: 'DOLOR SIT',
 			},
 			{
 				cwd: `${cwd}/dest-a`,
 				path: 'delta/epsilon.js',
-				contents: 'LOREM IPSUM'
+				contents: 'LOREM IPSUM',
 			},
 			{
 				cwd: `${cwd}/dest-a`,
 				path: 'eta.js',
-				contents: 'LOREM IPSUM'
-			}
+				contents: 'LOREM IPSUM',
+			},
 		]);
 
 		const b = await find('dest-b/**/*.js')
@@ -229,23 +229,23 @@ suite('@ygor/files', ({ test }) => {
 			{
 				cwd: `${cwd}/dest-b`,
 				path: 'alpha/beta.js',
-				contents: 'LOREM IPSUM'
+				contents: 'LOREM IPSUM',
 			},
 			{
 				cwd: `${cwd}/dest-b`,
 				path: 'alpha/gamma.js',
-				contents: 'DOLOR SIT'
+				contents: 'DOLOR SIT',
 			},
 			{
 				cwd: `${cwd}/dest-b`,
 				path: 'delta/epsilon.js',
-				contents: 'LOREM IPSUM'
+				contents: 'LOREM IPSUM',
 			},
 			{
 				cwd: `${cwd}/dest-b`,
 				path: 'eta.js',
-				contents: 'LOREM IPSUM'
-			}
+				contents: 'LOREM IPSUM',
+			},
 		]);
 	});
 

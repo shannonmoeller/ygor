@@ -5,7 +5,7 @@ import { mkdirp, stat } from '../src/fs.js';
 suite('@ygor/file/fs', ({ test }) => {
 	test('setup', async () => {
 		mockFs({
-			foo: {}
+			foo: {},
 		});
 	});
 

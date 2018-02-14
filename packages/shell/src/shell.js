@@ -4,7 +4,7 @@ import escape from 'any-shell-escape';
 function compileShell(options) {
 	options = {
 		stdio: 'inherit',
-		...options
+		...options,
 	};
 
 	return (strings, ...values) => {

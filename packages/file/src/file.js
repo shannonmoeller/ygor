@@ -138,7 +138,7 @@ export class File {
 		const readOptions = {
 			encoding: 'utf8',
 			flag: 'r',
-			...options
+			...options,
 		};
 
 		return readFile(pathname, readOptions)
@@ -175,7 +175,7 @@ export class File {
 			encoding: 'utf8',
 			flag: 'w',
 			mode: 0o666,
-			...options
+			...options,
 		};
 
 		return mkdirp(path.dirname(pathname).split(path.sep))
@@ -191,7 +191,7 @@ export class File {
 		return {
 			cwd: this.cwd,
 			path: this.path,
-			contents: this.contents
+			contents: this.contents,
 		};
 	}
 

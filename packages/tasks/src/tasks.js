@@ -13,7 +13,7 @@ import ms from 'ms';
 const cli = minimist(process.argv.slice(2), {
 	alias: { quiet: 'q' },
 	boolean: ['quiet', 'run'],
-	default: { quiet: false, run: true }
+	default: { quiet: false, run: true },
 });
 
 function logTime(name, startTime, endTime) {
@@ -108,7 +108,7 @@ function tasks(options = cli) {
 		run,
 
 		then: promise.then.bind(promise),
-		catch: promise.catch.bind(promise)
+		catch: promise.catch.bind(promise),
 	});
 }
 

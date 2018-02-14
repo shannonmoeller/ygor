@@ -36,7 +36,7 @@ suite('@ygor/list/filter', ({ test }) => {
 			delay('alpha', 10),
 			'beta',
 			'alfonzo',
-			delay('bart')
+			delay('bart'),
 		]).filter((x) => x.startsWith('a'));
 
 		t.deepEqual(a, ['alpha', 'alfonzo']);
@@ -49,7 +49,7 @@ suite('@ygor/list/find', ({ test }) => {
 			delay('alpha', 10),
 			'beta',
 			'alfonzo',
-			delay('bart')
+			delay('bart'),
 		]).find((x) => x.startsWith('a'));
 
 		t.deepEqual(a, ['alpha']);
@@ -61,7 +61,7 @@ suite('@ygor/list/first', ({ test }) => {
 		const a = await list([
 			delay('alpha', 10),
 			delay('beta', 5),
-			delay('gamma', 20)
+			delay('gamma', 20),
 		]).first();
 
 		t.deepEqual(a, ['beta']);
@@ -71,7 +71,7 @@ suite('@ygor/list/first', ({ test }) => {
 		const a = await list([
 			delay('alpha', 10),
 			'beta',
-			delay('gamma', 20)
+			delay('gamma', 20),
 		]).first(2);
 
 		t.deepEqual(a, ['beta', 'alpha']);
@@ -82,7 +82,7 @@ suite('@ygor/list/flatMap', ({ test }) => {
 	test('should flatten mapped items', async (t) => {
 		const a = await list([delay('alpha', 10), 'beta']).flatMap((x) => [
 			x,
-			x.toUpperCase()
+			x.toUpperCase(),
 		]);
 
 		t.deepEqual(a, ['alpha', 'ALPHA', 'beta', 'BETA']);
@@ -95,7 +95,7 @@ suite('@ygor/list/flatten', ({ test }) => {
 			[delay('alpha', 10), 'beta'],
 			{ 0: 'gamma', length: 1 },
 			'delta',
-			delay(['epsilon', 'zeta', delay('eta', 5), 'theta'], 10)
+			delay(['epsilon', 'zeta', delay('eta', 5), 'theta'], 10),
 		]).flatten();
 
 		t.deepEqual(a, [
@@ -106,7 +106,7 @@ suite('@ygor/list/flatten', ({ test }) => {
 			'epsilon',
 			'zeta',
 			'eta',
-			'theta'
+			'theta',
 		]);
 	});
 });

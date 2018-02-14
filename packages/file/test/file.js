@@ -9,8 +9,8 @@ suite('@ygor/file', ({ test }) => {
 			foo: {
 				'delete.me': 'so long',
 				'read.me': 'hello world',
-				'stat.me': 'i byte, therefore i am'
-			}
+				'stat.me': 'i byte, therefore i am',
+			},
 		});
 	});
 
@@ -31,7 +31,7 @@ suite('@ygor/file', ({ test }) => {
 		t.deepEqual(foo.toJSON(), {
 			cwd: process.cwd(),
 			path: undefined,
-			contents: undefined
+			contents: undefined,
 		});
 
 		t.deepEqual(foo.toString(), '<File "undefined" "undefined">');
@@ -41,7 +41,8 @@ suite('@ygor/file', ({ test }) => {
 		const foo = file({
 			cwd: '/a',
 			path: 'b/c/file.ext',
-			contents: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+			contents:
+				'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
 		});
 
 		t.equal(foo.cwd, '/a');
@@ -61,7 +62,8 @@ suite('@ygor/file', ({ test }) => {
 		t.deepEqual(foo.toJSON(), {
 			cwd: '/a',
 			path: 'b/c/file.ext',
-			contents: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+			contents:
+				'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
 		});
 
 		t.deepEqual(
@@ -194,7 +196,7 @@ suite('@ygor/file', ({ test }) => {
 		const foo = file({
 			cwd: 'foo/bar',
 			path: 'baz/write.me',
-			contents: 'lorem ipsum'
+			contents: 'lorem ipsum',
 		});
 
 		t.equal(foo.contents, 'lorem ipsum');

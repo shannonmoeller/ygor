@@ -28,13 +28,13 @@ export function find(pattern, options = {}) {
 		absolute: true,
 		nodir: true,
 		...options,
-		cwd
+		cwd,
 	};
 
 	return list(globby(patterns, globOptions)).map((x) =>
 		file({
 			cwd: workdir,
-			path: x.replace(workdir, '')
+			path: x.replace(workdir, ''),
 		})
 	);
 }
