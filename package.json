@@ -33,7 +33,7 @@
     "eslint-config-prettier": "^2.9.0",
     "eslint-config-whim": "^3.1.0",
     "husky": "^0.14.3",
-    "lerna": "^2.8.0",
+    "lerna": "^2.9.0",
     "mock-fs": "^4.4.2",
     "mute": "^2.0.6",
     "npm-run-all": "^4.1.2",

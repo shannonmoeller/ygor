@@ -5,6 +5,7 @@
  */
 
 import columns from 'cli-columns';
+import cyan from 'ansi-cyan';
 import gray from 'ansi-gray';
 import magenta from 'ansi-magenta';
 import minimist from 'minimist';
@@ -16,13 +17,29 @@ const cli = minimist(process.argv.slice(2), {
 	default: { quiet: false, run: true },
 });
 
-function logTime(name, startTime, endTime) {
-	const now = endTime ? endTime : startTime;
-	const nowStamp = now.toTimeString().slice(0, 8);
-	const message = endTime ? ms(endTime - startTime) : 'started';
+function logTime(time, message) {
+	const stamp = time.toTimeString().slice(0, 8);
 
-	// Use stderr to keep stdout useful
-	console.error(`[${gray(nowStamp)}] ${name}: ${magenta(message)}`);
+	console.error(`[${gray(stamp)}] ${message}`);
+}
+
+function time(name, options) {
+	if (options.quiet) {
+		return (val) => val;
+	}
+
+	const startTime = new Date();
+
+	logTime(startTime, `Starting '${cyan(name)}' ...`);
+
+	return (val) => {
+		const endTime = new Date();
+		const duration = ms(endTime - startTime);
+
+		logTime(endTime, `Finished '${cyan(name)}' (${magenta(duration)})`);
+
+		return val;
+	};
 }
 
 /**
@@ -53,24 +70,6 @@ function tasks(options = cli) {
 		return subtasks;
 	}
 
-	function time(name) {
-		if (options.quiet) {
-			return (val) => val;
-		}
-
-		const startTime = new Date();
-
-		logTime(name, startTime);
-
-		return (val) => {
-			const endTime = new Date();
-
-			logTime(name, startTime, endTime);
-
-			return val;
-		};
-	}
-
 	function run(name) {
 		const keys = Object.keys(registry);
 		const promise = Promise.resolve();
@@ -89,7 +88,7 @@ function tasks(options = cli) {
 			return promise;
 		}
 
-		const done = time(name);
+		const done = time(name, options);
 
 		return promise.then(() => task(options, subtasks)).then(done);
 	}
