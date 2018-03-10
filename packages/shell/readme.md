@@ -7,7 +7,7 @@ A no-frills shell template tag. Built on [promises](https://developer.mozilla.or
 ## Install
 
 ```console
-$ npm install --save @ygor/file
+$ npm install --save @ygor/shell
 ```
 
 ## Usage
