@@ -5,7 +5,7 @@
  */
 
 import path from 'path';
-import globby from 'globby';
+import glob from 'fast-glob';
 import globParent from 'glob-parent';
 import file from '@ygor/file';
 import list from '@ygor/list';
@@ -24,14 +24,12 @@ export function find(pattern, options = {}) {
 	const workdir = `${path.resolve(cwd, parent)}/`;
 
 	const globOptions = {
-		ignore: ['**/node_modules/**'],
 		absolute: true,
-		nodir: true,
 		...options,
 		cwd,
 	};
 
-	return list(globby(patterns, globOptions)).map((x) =>
+	return list(glob(patterns, globOptions)).map((x) =>
 		file({
 			cwd: workdir,
 			path: x.replace(workdir, ''),

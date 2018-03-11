@@ -22,14 +22,14 @@
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-eslint": "^8.2.1",
+    "babel-eslint": "^8.2.2",
     "babel-preset-whim": "^1.0.0",
     "babel-register": "^6.26.0",
     "blue-tape": "^1.0.0",
     "coveralls": "^3.0.0",
-    "cross-env": "^5.1.3",
+    "cross-env": "^5.1.4",
     "del-cli": "^1.1.0",
-    "eslint": "^4.17.0",
+    "eslint": "^4.18.2",
     "eslint-config-prettier": "^2.9.0",
     "eslint-config-whim": "^3.1.0",
     "husky": "^0.14.3",
@@ -38,7 +38,7 @@
     "mute": "^2.0.6",
     "npm-run-all": "^4.1.2",
     "nyc": "^11.4.1",
-    "prettier": "^1.10.2",
+    "prettier": "^1.11.1",
     "tap-diff": "^0.1.1"
   },
   "babel": {
