@@ -20,9 +20,8 @@
   "dependencies": {
     "@ygor/file": "^5.4.0",
     "@ygor/list": "^5.4.0",
-    "fast-glob": "^2.1.0",
-    "glob-parent": "^3.1.0",
-    "globby": "^8.0.1"
+    "fast-glob": "^2.2.0",
+    "glob-parent": "^3.1.0"
   },
   "engines": {
     "node": ">= 6",

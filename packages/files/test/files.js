@@ -13,12 +13,12 @@ suite('@ygor/files', ({ test }) => {
 		mockFs({
 			src: {
 				alpha: {
-					'beta.js': 'lorem ipsum',
 					'gamma.js': 'dolor sit',
+					'beta.js': 'lorem ipsum',
 				},
 				delta: {
-					'epsilon.js': 'lorem ipsum',
 					'zeta.css': 'dolor sit',
+					'epsilon.js': 'lorem ipsum',
 				},
 				'eta.js': 'lorem ipsum',
 				'theta.css': 'dolor sit',
@@ -38,17 +38,21 @@ suite('@ygor/files', ({ test }) => {
 
 	test('should find files', async (t) => {
 		const a = await find('src/**/*.js').map(toJSON);
+		const z = await find('src/**/*.js', { sort: false }).map(toJSON);
+
 		const b = await find('./src/**/*.js').map(toJSON);
 		const c = await find('**/*.js', { cwd: 'src' }).map(toJSON);
 		const d = await find('./**/*.js', { cwd: 'src' }).map(toJSON);
 		const e = await find(`${__dirname}/../../../src/**/*.js`).map(toJSON);
-		const f = await find('../../../src/**/*.js', { cwd: __dirname }).map(
-			toJSON
-		);
-		const g = await find('**/*.js', {
-			cwd: `${__dirname}/../../../src`,
-		}).map(toJSON);
 
+		const fdir = __dirname;
+		const f = await find('../../../src/**/*.js', { cwd: fdir }).map(toJSON);
+
+		const gdir = `${__dirname}/../../../src`;
+		const g = await find('**/*.js', { cwd: gdir }).map(toJSON);
+
+		t.notDeepEqual(a, z);
+		t.deepEqual(a, b);
 		t.deepEqual(a, b);
 		t.deepEqual(a, c);
 		t.deepEqual(a, d);

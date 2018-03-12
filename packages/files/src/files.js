@@ -19,7 +19,6 @@ import list from '@ygor/list';
 export function find(pattern, options = {}) {
 	const patterns = [].concat(pattern || []);
 	const parent = globParent(patterns[0]);
-
 	const cwd = path.resolve(process.cwd(), options.cwd || '');
 	const workdir = `${path.resolve(cwd, parent)}/`;
 
@@ -29,7 +28,15 @@ export function find(pattern, options = {}) {
 		cwd,
 	};
 
-	return list(glob(patterns, globOptions)).map((x) =>
+	let paths = glob(patterns, globOptions).then((x) =>
+		x.map((y) => path.resolve(y))
+	);
+
+	if (options.sort !== false) {
+		paths = paths.then((x) => x.sort());
+	}
+
+	return list(paths).map((x) =>
 		file({
 			cwd: workdir,
 			path: x.replace(workdir, ''),
