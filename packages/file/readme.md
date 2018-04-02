@@ -177,10 +177,10 @@ const foo = file({ path: 'foo/bar.txt' });
 console.log(foo.absolute);
 // -> /home/jdoe/foo/bar.txt
 
-console.log(foo.basename);
+console.log(foo.stem);
 // -> bar
 
-foo.basename = 'qux';
+foo.stem = 'qux';
 
 console.log(foo.absolute);
 // -> /home/jdoe/foo/qux.txt
@@ -196,10 +196,10 @@ const foo = file({ path: 'foo/bar.txt' });
 console.log(foo.absolute);
 // -> /home/jdoe/foo/bar.txt
 
-console.log(foo.basename);
+console.log(foo.extname);
 // -> .txt
 
-foo.basename = '.html';
+foo.extname = '.html';
 
 console.log(foo.absolute);
 // -> /home/jdoe/foo/bar.html
