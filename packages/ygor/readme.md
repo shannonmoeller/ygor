@@ -42,7 +42,7 @@ function buildCss() {
 function buildJs(cli) {
   return find('src/**/*.js')
     .map(read())
-    .map(file => {
+    .map(async (file) => {
       const { code } = await transform(file.contents, cli);
 
       file.contents = code;
